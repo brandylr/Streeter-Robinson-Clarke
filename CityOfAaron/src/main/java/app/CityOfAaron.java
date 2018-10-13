@@ -3,6 +3,12 @@
  * the program starts.
  */
 package app;
+import model.Game; 
+import model.Player;
+import model.Map;
+import model.Storehouse;
+
+
 
 
 public class CityOfAaron {
@@ -14,6 +20,12 @@ public class CityOfAaron {
      * contained in this array.
      */
     public static void main(String[] args) {
+        
+        Game theGame = new Game();
+        theGame.setThePlayer(new Player());
+        theGame.setTheMap(new Map());
+        theGame.setTheStorehouse(new Storehouse());
+        
 
         System.out.println("It works!");
 

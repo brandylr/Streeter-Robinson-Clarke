@@ -4,13 +4,13 @@
  * and open the template in the editor.
  */
 package model;
-
+import java.io.Serializable;
 /**
  *
  * @author brobinson
  */
-public enum Condition {
+public enum Condition implements Serializable{
     GOOD,
     FAIR, 
-    POOR
+    POOR;
 }

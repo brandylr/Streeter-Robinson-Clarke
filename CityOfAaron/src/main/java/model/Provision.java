@@ -12,7 +12,28 @@ import java.io.Serializable;
  * @author brobinson
  */
 public class Provision extends InventoryItem implements Serializable {
-    private boolean Perishable;
+    
+    private boolean perishable;
+    
+    public Provision(){
+        
+    }
+    
+    public boolean isPerishable(){
+        return perishable;
+    }
+    
+    public void setIsPerishable(boolean perishable){
+        this.perishable = perishable;
+    }
+
+    @Override
+    public String toString() {
+        return "Provision{" 
+                + "perishable=" + perishable 
+                + " }";
+    }
+    
     
     
 }
