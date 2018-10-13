@@ -3,16 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package byui.cit260.streeterrobinsonclarkes;
+package model;
 
 import java.io.Serializable;
 
 /**
  *
- * @author arthu
+ * @author brobinson
  */
-public class Map implements Serializable {
+public class Provision extends InventoryItem implements Serializable {
+    private boolean Perishable;
     
-
     
 }

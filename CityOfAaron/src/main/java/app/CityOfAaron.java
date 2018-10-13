@@ -2,8 +2,8 @@
  * Main class. This is the first code that will be executed when 
  * the program starts.
  */
-
 package app;
+
 
 public class CityOfAaron {
 
