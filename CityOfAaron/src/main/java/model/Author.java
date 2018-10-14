@@ -1,16 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package model;
 
 import java.io.Serializable;
+import java.util.Objects;
 
-/**
- *
- * @author arthu
- */
+
 public class Author implements Serializable {
     private String name;
     private String title;
@@ -35,13 +29,45 @@ public class Author implements Serializable {
     }
 
 
+
+
     @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 41 * hash + Objects.hashCode(this.name);
+        hash = 41 * hash + Objects.hashCode(this.title);
+        return hash;
+    }
+
+        @Override
     public String toString() {
         return "Author{" 
                 + "name=" + name 
                 + ", title=" + title 
                 + " }";
     }
+    
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Author other = (Author) obj;
+        if (!Objects.equals(this.name, other.name)) {
+            return false;
+        }
+        if (!Objects.equals(this.title, other.title)) {
+            return false;
+        }
+        return true;
+    }
+    
     
     
 }

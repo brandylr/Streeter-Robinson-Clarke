@@ -16,7 +16,7 @@ import java.util.Arrays;
  */
 public class Storehouse implements Serializable {
     
-    public ArrayList<Author> authors = new ArrayList<Author>();
+    public ArrayList<Author> authors;
     public Animal[] animals;
     public InventoryItem[] tools;
     public Provision[] provisions;
