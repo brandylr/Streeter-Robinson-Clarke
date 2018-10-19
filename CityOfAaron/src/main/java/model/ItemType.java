@@ -4,11 +4,13 @@
  * and open the template in the editor.
  */
 package model;
-
+import java.io.Serializable;
 /**
  *
  * @author brobinson
  */
-public class ItemType {
-    
+public enum ItemType implements Serializable {
+    Animals,
+    Tools,
+    Provisions;
 }
