@@ -12,6 +12,7 @@ import model.InventoryItem;
 import model.Location;
 import model.Provision;
 import model.Author;
+import model.Condition;
 
 
 
