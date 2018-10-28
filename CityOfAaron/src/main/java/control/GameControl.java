@@ -12,6 +12,8 @@ import java.util.Random;
  * @author arthu
  */
 public class GameControl {
+    
+    
     public static int getRandomNumber(int lowVal, int highVal){
         
         if (lowVal < 0) {
