@@ -21,15 +21,15 @@ public class CalculateMortalityTest {
         System.out.println("calculateMortality");
         int bushelsForFood = 0;
         int currentPopulation = 0;
-        int expResult = 0;
+        int expResult = -1;
         int result = CalculateMortality.calculateMortality(bushelsForFood, currentPopulation);
         assertEquals(expResult, result);
     }
     
     @Test
     public void testCase1(){
-        int result = CalculateMortality.calculateMortality(2400, 120);
-        assertEquals(0, result);
+        int result = CalculateMortality.calculateMortality(-1, 10);
+        assertEquals(-1, result);
     }
     
     @Test
