@@ -117,6 +117,18 @@ public class MainMenuView {
                 System.out.println("Thanks for playing. Until next time!");
                 return false;
         }
+        
+        
+        System.out.println(
+                "\n*********************************\n"
+                + "Invalid option chosen, try again.\n"
+                + "*********************************");
+        try {
+            Thread.sleep(500);
+        }
+        catch (InterruptedException exception) {
+                // ignore this exception for now.
+        }
         return true;
         // return false if you want this view to exit and return
         // to the view that called it.
