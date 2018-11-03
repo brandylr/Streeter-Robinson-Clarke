@@ -21,8 +21,16 @@ public class StartProgramView {
     public StartProgramView(){
         
         message = "Welcome to the City of Aaron!\n"
-                + "TODO: Fill in this description with your own\n"
-                + "game description\n";
+                + "You have been granted the power to rule the city. With that\n"
+                + "power, however, comes great responsibilty. It is up to you\n"
+                + "to buy or sell land. As ruler, you are to care for the needs\n"
+                + "of your citizens. You need to determine how much wheat to\n"
+                + "plant, set aside to feed said citizens, and to pay an annual\n"
+                + "tithe on harvested wheat. If you don't plan appropriately,\n"
+                + "and there isn't enough wheat for food, some of your citizens\n"
+                + "will starve and die. Too many die and you will be kicked out!\n"
+                + "There is also the possibility of rats eating some of the wheat.\n"
+                + "Good luck!";
                 
     }
     
