@@ -70,6 +70,10 @@ public class GameControl {
         }
         return (new Random().nextInt(highVal + 1 - lowVal) + lowVal );
     }
+
+    public static void liveTheYear() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }
 

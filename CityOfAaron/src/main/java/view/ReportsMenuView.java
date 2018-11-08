@@ -1,6 +1,7 @@
 
 package view;
 
+import app.CityOfAaron;
 import java.util.Scanner;
 
 /**
@@ -20,12 +21,24 @@ public class ReportsMenuView {
      */
     public ReportsMenuView(){
         
-        message = "This is the message that is printed to the user by this view.\n"
-                + "You have three tasks:\n"
-                + "1 - Replace this message text with the text that is specific to your view.\n"
-                + "2 - Replace this list with menu options that are specific to your view.\n"
-                + "\n"
-                + "3 - Prompt the user for what they are expected to enter.\n";
+        message = "\n\n\n"
+                + "**********************************************************\n"
+                + "**********************Annual Report***********************\n"
+                + "**********************************************************\n"
+                + "Current Population: " + CityOfAaron.getCurrentGame().getCurrentPopulation() + "\n"
+                + "Acres Owned: " + CityOfAaron.getCurrentGame().getAcresOwned() + "\n"
+                + "Wheat In Storage: " + CityOfAaron.getCurrentGame().getWheatInStorage() + "\n"
+                + "Last Year's Loss to Rats: " + "\n"
+                + "New Move Ins: " + "\n"
+                + "Last Year's Deaths: " + "\n"
+                + "Storehouse Inventory \n"
+                + "Animals: " + "\n"
+                + "Tools: " + "\n"
+                + "Provisions: " + "\n"
+                + "Authors: " + "\n"
+                + "**********************************************************\n"
+                + "**********************************************************\n"
+                + "Would you like to save this report to file?";
                 
     }
     
@@ -84,7 +97,7 @@ public class ReportsMenuView {
         // from the user.
         String[] inputs = new String[1];
         
-        inputs[0] = getUserInput("Change this text to prompt the user for the input.");
+        inputs[0] = getUserInput("Y/N :");
         
         // Repeat for each input you need, putting it into its proper slot in the array.
         
@@ -106,9 +119,27 @@ public class ReportsMenuView {
         
         // return false if you want this view to exit and return
         // to the view that called it.
-        someActionHandler();
+        switch (inputs[0].trim().toUpperCase()){
+            case "Y":
+                saveReport();
+                break;
+            case "Yes":
+                saveReport();
+                break;
+            case "N":
+                return false;
+            case "No":
+                return false;
+            default :
+                System.out.println(
+                "\n*********************************\n"
+                + "Invalid option chosen, try again.\n"
+                + "*********************************");
+                pause(1000);
+                return true;
+        }
         
-        return true;
+                return true;
     }
     
     
@@ -134,14 +165,32 @@ public class ReportsMenuView {
     // complex game stuff in our doAction() method. It will get messy very quickly.
     
     
-    private boolean someActionHandler(){
-        // Define whatever code you need here to accomplish the action.
-        // You can make this a void method if you want. Whatever you need 
-        // here, you are free to do.
-        //
-        // Generally, though, this is where you will call into your Control
-        // classes to do the work of the application.
-        
-        return true;
+    private void pause(int time){
+        try {
+                    Thread.sleep(time / 3);
+                }
+                catch (InterruptedException exception) {
+                        // ignore this exception for now.
+                }
+        System.out.println(".");
+        try {
+                    Thread.sleep(time / 3);
+                }
+                catch (InterruptedException exception) {
+                        // ignore this exception for now.
+                }
+        System.out.println(".");
+        try {
+                    Thread.sleep(time / 3);
+                }
+                catch (InterruptedException exception) {
+                        // ignore this exception for now.
+                }
+        System.out.println(".");
+    }
+    
+    private void saveReport(){
+        System.out.println("*** saveReport() called. Coming soon.");
+        pause(3000);
     }
 }
