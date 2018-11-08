@@ -2,10 +2,7 @@
 package view;
 
 import java.util.Scanner;
-import model.Player;
-import model.Game;
 import app.CityOfAaron;
-import control.GameControl;
 
 /**
  *
@@ -24,7 +21,8 @@ public class GameMenuView {
      */
     public GameMenuView(){
         
-        message = "\n\n\n**********************************************************\n"
+        message = "\n\n\n"
+                + "**********************************************************\n"
                 + "**********************Current Year************************\n"
                 + "**********************************************************\n"
                 + "Player Name: " + CityOfAaron.getCurrentGame().getThePlayer().getName() + "\n"
