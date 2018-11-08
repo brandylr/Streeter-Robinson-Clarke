@@ -10,9 +10,10 @@ package control;
  * @author arthu
  */
 public class WheatControl {
+
     
-    public static int calculateLossToRats(double tithesPaid, int totalWheat){
-       if (tithesPaid < 0) {
+    public static int calculateLossToRats(double tithesPercent, int totalWheat){
+       if (tithesPercent < 0) {
            return -1;
        }
        if (totalWheat < 0){
@@ -21,32 +22,31 @@ public class WheatControl {
        
        int chanceForRats = GameControl.getRandomNumber(1,100);
        
+       int lossToRats = 0;
+       
        double tithingMultiplier = 0.01;
        
        if (chanceForRats >= 1 && chanceForRats <= 30) {
-                if (tithesPaid > 0.12) {
+                if (tithesPercent > 12) {
                     tithingMultiplier *= GameControl.getRandomNumber(3,5);
-                    totalWheat -= (totalWheat * tithingMultiplier);
-                return totalWheat;
+                    lossToRats = (int) Math.round(totalWheat * tithingMultiplier);
+                return lossToRats;
                 }
 
-                if (tithesPaid > .08 && tithesPaid < 0.12) {
+                if (tithesPercent >= 8 && tithesPercent <= 12) {
                     tithingMultiplier *= GameControl.getRandomNumber( 3, 7);
-                    totalWheat -= (totalWheat * tithingMultiplier);
-                return totalWheat;
+                    lossToRats = (int) Math.round(totalWheat * tithingMultiplier);
+                return lossToRats;
                 }
 
-                if (tithesPaid < 0.08) {
+                if (tithesPercent < 8) {
                     tithingMultiplier *= GameControl.getRandomNumber( 6, 10);
-                    totalWheat -= (totalWheat * tithingMultiplier);
-                return totalWheat;
+                    lossToRats = (int) Math.round(totalWheat * tithingMultiplier);
+                return lossToRats;
                 }
            
        }
-       else {
-           return totalWheat;
-       }
-       return totalWheat;
+       return lossToRats;
     }
     
 }

@@ -31,7 +31,7 @@ public class CalculateHarvest {
             low = 2;
             high = 4;
         }
-        if (tithesPercent > 12) {
+        if (tithesPercent >= 12) {
             low = 2;
             high = 5;
         }

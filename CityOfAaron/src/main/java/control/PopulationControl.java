@@ -1,15 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package control;
 
 /**
  *
  * @author brobinson
  */
-public class CalculateMortality {
+public class PopulationControl {
     
     // Calculate the number of people who are not fed the amount required to 
     // sustain life (20 bushels per person). They die. It is sad. 
@@ -37,6 +33,13 @@ public class CalculateMortality {
         
         // otherwise return currentPopulation - numberOfPeopleFed
         return currentPopulation - numberOfPeopleFed;
+    }
+    
+    public static int calculateNewMoveIns(int currentPopulation){
+        
+        int newMoveIns = currentPopulation * GameControl.getRandomNumber(3,5);
+                
+        return newMoveIns;
     }
     
 }

@@ -5,6 +5,7 @@
  */
 package model;
 
+import control.PopulationControl;
 import java.io.Serializable;
 
 /**
@@ -12,6 +13,10 @@ import java.io.Serializable;
  * @author arthu
  */
 public class Game implements Serializable {
+
+
+
+
     
     private Player thePlayer;
     private Map theMap;
@@ -22,6 +27,43 @@ public class Game implements Serializable {
 
     public Game() {
     }
+    
+    /* testing a builder class here */
+    public static class builder {
+        
+        private int acresOwned;
+        private int currentPopulation;
+        private int wheatInStorage;
+        
+        public builder acresOwned(int acresOwned){
+            this.acresOwned = acresOwned;            
+            return this;
+        }
+        
+        public builder currentPopulation(int currentPopulation){
+            this.currentPopulation = currentPopulation;
+            return this;
+        }
+        
+        public builder wheatInStorage(int wheatInStorage){
+            this.wheatInStorage = wheatInStorage;
+            return this;
+        }
+        
+        public Game build(){
+            Game game = new Game();
+            game.acresOwned = this.acresOwned;
+            game.currentPopulation = this.currentPopulation;
+            game.wheatInStorage = this.wheatInStorage;
+            
+            return game;
+        }
+        
+        
+    }
+        /* testing a builder class above */
+    
+    
 
     public Player getThePlayer() {
         return thePlayer;
@@ -50,7 +92,9 @@ public class Game implements Serializable {
     public int getCurrentPopulation() {
         return currentPopulation;
     }
-
+    public int peopleMovedIn() {
+        return PopulationControl.calculateNewMoveIns(currentPopulation);
+    }
     public void setCurrentPopulation(int currentPopulation) {
         this.currentPopulation = currentPopulation;
     }
