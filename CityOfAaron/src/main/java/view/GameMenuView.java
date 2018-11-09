@@ -216,11 +216,13 @@ public class GameMenuView {
         System.out.println(".");
     }
     private void  manageCrops(){
-        System.out.println("*** manageCrops() called. Coming soon.\n\n");
+        ManageCropsView view = new ManageCropsView();
+        view.displayView();
         pause(3000);
     }
     private void viewMap(){
-        System.out.println("*** viewMap() called. Coming soon.\n\n");
+        MapView view = new MapView();
+        view.displayView();
         pause(3000);
     }
     private void moveLocation(){
@@ -229,7 +231,7 @@ public class GameMenuView {
     }
     private void viewReport(){
         ReportsMenuView view = new ReportsMenuView();
-         view.displayView();
+        view.displayView();
     }
     private void liveTheYearTemp(){
         System.out.println("*** liveTheYear() called. Coming soon.\n\n");
