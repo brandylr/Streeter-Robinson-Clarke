@@ -3,12 +3,14 @@ package view;
 
 import java.util.Scanner;
 
+
+
+
 /**
  *
- * @author kanderson
+ * @author jonclarkes
  */
-public class MainMenuView {
-    
+public class LoadSavedGameView {
     
     /**
      * The message that will be displayed by this view.
@@ -18,19 +20,14 @@ public class MainMenuView {
     /**
      * Constructor
      */
-    public MainMenuView(){
+      public LoadSavedGameView(){
         
-        message = "Main Menu\n"
-                + "-------------\n"
-                + "N - Start a New Game\n"
-                + "L - Load a Saved Game\n"
-                + "H - Help Menu\n"
-                + "Q - Quit\n";
+        message = "Loading a saved game...\n\n";
                 
     }
-    
-    
-    /**
+      
+      
+   /**
      * Get the user's input. Keep prompting them until they enter a value.
      * @param prompt
      * @param allowEmpty - determine whether the user can enter no value (just a return key)
@@ -84,7 +81,7 @@ public class MainMenuView {
         // from the user.
         String[] inputs = new String[1];
         
-        inputs[0] = getUserInput("Please choose an option:");
+        inputs[0] = getUserInput("Please enter file name, or press 'Enter to return to the Main Menu:", true);
         
         // Repeat for each input you need, putting it into its proper slot in the array.
         
@@ -99,40 +96,33 @@ public class MainMenuView {
      * should exit and return to the previous view.
      */
     public boolean doAction(String[] inputs){
-        // Act on the user's input.
-        // This is a "dispatch" function that decides what
-        // other functions to call. You can use an if-, if-else,
-        // or switch statement.
-        switch (inputs[0].trim().toUpperCase()){
+        //Initialize the Game.
+        //Set it in the main CityofAaron class.
+        
+        //If the user merely hit 'enter', exit out without
+        //doing the action. Returning false will take us back
+        //to the main menu.
+         switch (inputs[0].trim().toUpperCase()){
+            case "Y":
+                loadGameFile();
+                break;
+            case "Yes":
+                loadGameFile();
+                break;
             case "N":
-                startNewGame();
-                break;
-            case "L":
-                loadSavedGame();
-                break;
-            case "H":
-                helpMenu();
-                break;
-            case "Q":
-                System.out.println("Thanks for playing. Until next time!");
+                return false;
+            case "No":
                 return false;
             default :
                 System.out.println(
                 "\n*********************************\n"
                 + "Invalid option chosen, try again.\n"
                 + "*********************************");
-                try {
-                    Thread.sleep(500);
-                }
-                catch (InterruptedException exception) {
-                        // ignore this exception for now.
-                }
+                pause(1000);
                 return true;
         }
         
-        return true;
-        // return false if you want this view to exit and return
-        // to the view that called it.
+                return true;
     }
     
     
@@ -153,23 +143,35 @@ public class MainMenuView {
     }
     
     
-    // Define your action handlers here. These are the methods that your doAction()
-    // method will call based on the user's input. We don't want to do a lot of 
-    // complex game stuff in our doAction() method. It will get messy very quickly.
-    
-    
-    private void startNewGame(){
-         NewGameView view = new NewGameView();
-         view.displayView();
+     private void pause(int time){
+        try {
+                    Thread.sleep(time / 3);
+                }
+                catch (InterruptedException exception) {
+                        // ignore this exception for now.
+                }
+        System.out.println(".");
+        try {
+                    Thread.sleep(time / 3);
+                }
+                catch (InterruptedException exception) {
+                        // ignore this exception for now.
+                }
+        System.out.println(".");
+        try {
+                    Thread.sleep(time / 3);
+                }
+                catch (InterruptedException exception) {
+                        // ignore this exception for now.
+                }
+        System.out.println(".");
     }
     
-    private void helpMenu(){
-        HelpMenuView view = new HelpMenuView();
-        view.displayView();
+    private void loadGameFile(){
+        System.out.println("*** loadGameFile() called. Coming soon.");
+        pause(3000);
     }
+  
+        
     
-    private void loadSavedGame(){
-        LoadSavedGameView view = new LoadSavedGameView();
-        view.displayView();
-    }
 }

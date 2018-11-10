@@ -1,16 +1,18 @@
 
 package view;
 
+import app.CityOfAaron;
 import java.util.Scanner;
+
+
 
 /**
  *
- * @author kanderson
+ * @author jonclarkes
  */
-public class MainMenuView {
+public class MoveLocationView {
     
-    
-    /**
+     /**
      * The message that will be displayed by this view.
      */
     protected String message;
@@ -18,17 +20,12 @@ public class MainMenuView {
     /**
      * Constructor
      */
-    public MainMenuView(){
+    public MoveLocationView(){
         
-        message = "Main Menu\n"
-                + "-------------\n"
-                + "N - Start a New Game\n"
-                + "L - Load a Saved Game\n"
-                + "H - Help Menu\n"
-                + "Q - Quit\n";
-                
+        message = "Moving to a new location...\n\n";
+        message = "Name of Location...\n\n";
+        message = "Tips of the City...\n\n";        
     }
-    
     
     /**
      * Get the user's input. Keep prompting them until they enter a value.
@@ -62,9 +59,7 @@ public class MainMenuView {
         
         return input;
     }
-    
-    
-    /**
+     /**
      * An overloaded version of getUserInput that sets allowEmpty to false so we don't have 
      * to type it ourselves.
      * @param prompt
@@ -78,65 +73,48 @@ public class MainMenuView {
      * Get the set of inputs from the user.
      * @return 
      */
+    
     public String[] getInputs() {
-        
         // Declare the array to have the number of elements you intend to get 
         // from the user.
-        String[] inputs = new String[1];
+        String[] inputs = new String[2];
         
-        inputs[0] = getUserInput("Please choose an option:");
+        //The following string is printed to the console by the statement 'system.out.println(prompt)'
+        // included in the getUserInput method
         
-        // Repeat for each input you need, putting it into its proper slot in the array.
+        inputs[0] = getUserInput("Please enter the row coordiante", true);
+        inputs[1] = getUserInput("Please enter the column coordiante", true);
+        
+        // repeat for each input you need, putting it in its proper slot in the array.
         
         return inputs;
     }
-    
-    
-    /**
+     /**
      * Perform the action indicated by the user's input.
      * @param inputs
      * @return true if the view should repeat itself, and false if the view
      * should exit and return to the previous view.
      */
     public boolean doAction(String[] inputs){
-        // Act on the user's input.
-        // This is a "dispatch" function that decides what
-        // other functions to call. You can use an if-, if-else,
-        // or switch statement.
-        switch (inputs[0].trim().toUpperCase()){
-            case "N":
-                startNewGame();
-                break;
-            case "L":
-                loadSavedGame();
-                break;
-            case "H":
-                helpMenu();
-                break;
-            case "Q":
-                System.out.println("Thanks for playing. Until next time!");
-                return false;
-            default :
-                System.out.println(
-                "\n*********************************\n"
-                + "Invalid option chosen, try again.\n"
-                + "*********************************");
-                try {
-                    Thread.sleep(500);
-                }
-                catch (InterruptedException exception) {
-                        // ignore this exception for now.
-                }
-                return true;
+        
+        if ((inputs[0] == null && inputs[1] == null) || (inputs[0].equals("") && inputs[1].equals(""))) {
+            System.out.println("No coordiantes entered. Returning to game menu");
+            return false;
         }
         
-        return true;
-        // return false if you want this view to exit and return
-        // to the view that called it.
+        int row, column;
+        try {
+            row = Integer.parseInt(inputs[0]);
+            column = Integer.parseInt(inputs[1]);
+        } catch (NumberFormatException exception) {
+            System.out.println("Row and Column values must be whole numbers");
+            return true; //keep going
+        }     
+        
+        // to interrupt loop of display method
+        return false;
     }
-    
-    
-    /**
+   /**
      * Control this view's display/prompt/action loop until the user
      * chooses and action that causes this view to close.
      */
@@ -150,26 +128,5 @@ public class MainMenuView {
             String[] inputs = getInputs();
             keepGoing = doAction(inputs);
         }
-    }
-    
-    
-    // Define your action handlers here. These are the methods that your doAction()
-    // method will call based on the user's input. We don't want to do a lot of 
-    // complex game stuff in our doAction() method. It will get messy very quickly.
-    
-    
-    private void startNewGame(){
-         NewGameView view = new NewGameView();
-         view.displayView();
-    }
-    
-    private void helpMenu(){
-        HelpMenuView view = new HelpMenuView();
-        view.displayView();
-    }
-    
-    private void loadSavedGame(){
-        LoadSavedGameView view = new LoadSavedGameView();
-        view.displayView();
     }
 }

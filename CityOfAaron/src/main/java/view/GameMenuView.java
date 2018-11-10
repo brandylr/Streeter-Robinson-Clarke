@@ -226,7 +226,8 @@ public class GameMenuView {
         pause(3000);
     }
     private void moveLocation(){
-        System.out.println("*** moveLocation() called. Coming soon.\n\n");
+        MoveLocationView view = new MoveLocationView();
+        view.displayView();
         pause(3000);
     }
     private void viewReport(){
