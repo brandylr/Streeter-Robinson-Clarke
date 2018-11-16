@@ -12,6 +12,7 @@ public class GameMenuView extends ViewBase {
      * Constructor
      */
     public GameMenuView() {
+        super();
     }
     
     @Override

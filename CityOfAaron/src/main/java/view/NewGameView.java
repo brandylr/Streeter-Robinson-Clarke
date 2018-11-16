@@ -10,6 +10,7 @@ public class NewGameView extends ViewBase {
      * Constructor
      */
     public NewGameView() {
+        super();
     }
 
     @Override

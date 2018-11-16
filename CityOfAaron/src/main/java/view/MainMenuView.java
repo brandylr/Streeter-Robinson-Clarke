@@ -6,6 +6,7 @@ public class MainMenuView extends ViewBase {
      * Constructor
      */
     public MainMenuView() {
+        super();
     }
 
     @Override
