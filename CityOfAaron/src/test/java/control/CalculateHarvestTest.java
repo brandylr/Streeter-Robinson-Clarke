@@ -58,7 +58,7 @@ public class CalculateHarvestTest {
     }
     @Test
     public void testCase6(){
-       int result = CalculateHarvest.calculateHarvest(10, 10);
-        assertEquals(30, result);  
+       int result = CalculateHarvest.calculateHarvest(10, (int) 0.001);
+        assertEquals(20, result);  
     }
 }

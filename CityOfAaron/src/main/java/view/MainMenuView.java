@@ -81,8 +81,9 @@ public class MainMenuView extends ViewBase {
         HelpMenuView view = new HelpMenuView();
         view.displayView();
     }
-
-    private void loadSavedGame() {
-        System.out.println("*** loadSavedGame() called. Implementation coming soon.");
+    
+    private void loadSavedGame(){
+        LoadSavedGameView view = new LoadSavedGameView();
+        view.displayView();
     }
 }

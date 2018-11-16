@@ -1,25 +1,22 @@
 package view;
 
-import java.util.Scanner;
 import app.CityOfAaron;
 
 /**
  *
  * @author kanderson
  */
-public class GameMenuView {
-
-    /**
-     * The message that will be displayed by this view.
-     */
-    protected String message;
+public class GameMenuView extends ViewBase {
 
     /**
      * Constructor
      */
     public GameMenuView() {
-
-        message = "\n\n\n"
+    }
+    
+    @Override
+    protected String getMessage() {
+        return "\n\n\n"
                 + "**********************************************************\n"
                 + "**********************Current Year************************\n"
                 + "**********************************************************\n"
@@ -43,56 +40,12 @@ public class GameMenuView {
     }
 
     /**
-     * Get the user's input. Keep prompting them until they enter a value.
-     *
-     * @param prompt
-     * @param allowEmpty - determine whether the user can enter no value (just a
-     * return key)
-     * @return
-     */
-    protected String getUserInput(String prompt, boolean allowEmpty) {
-
-        Scanner keyboard = new Scanner(System.in);
-        String input = "";
-        boolean inputReceived = false;
-
-        while (inputReceived == false) {
-
-            System.out.println(prompt);
-            input = keyboard.nextLine();
-
-            // Make sure we avoid a null-pointer error.
-            if (input == null) {
-                input = "";
-            }
-
-            // Trim any trailing whitespace, including the carriage return.
-            input = input.trim();
-
-            if (input.equals("") == false || allowEmpty == true) {
-                inputReceived = true;
-            }
-        }
-
-        return input;
-    }
-
-    /**
-     * An overloaded version of getUserInput that sets allowEmpty to false so we
-     * don't have to type it ourselves.
-     *
-     * @param prompt
-     * @return
-     */
-    protected String getUserInput(String prompt) {
-        return getUserInput(prompt, false);
-    }
-
-    /**
      * Get the set of inputs from the user.
      *
      * @return
      */
+    
+    @Override
     public String[] getInputs() {
 
         // Declare the array to have the number of elements you intend to get 
@@ -112,6 +65,7 @@ public class GameMenuView {
      * @return true if the view should repeat itself, and false if the view
      * should exit and return to the previous view.
      */
+    @Override
     public boolean doAction(String[] inputs) {
         // Act on the user's input.
         // This is a "dispatch" function that decides what
@@ -158,49 +112,22 @@ public class GameMenuView {
         // to the view that called it.
     }
 
-    /**
-     * Control this view's display/prompt/action loop until the user chooses and
-     * action that causes this view to close.
-     */
-    public void displayView() {
-
-        boolean keepGoing = true;
-
-        while (keepGoing == true) {
-
-            System.out.println(message);
-            String[] inputs = getInputs();
-            keepGoing = doAction(inputs);
-        }
-    }
-
-    // Define your action handlers here. These are the methods that your doAction()
-    // method will call based on the user's input. We don't want to do a lot of 
-    // complex game stuff in our doAction() method. It will get messy very quickly.
-    private void pause(int time) {
-        int i;
-
-        for (i = 0; i < 3; i++) {
-            try {
-                Thread.sleep(time / 3);
-            } catch (InterruptedException exception) {
-            }
-            System.out.println(".");
-        }
-    }
 
     private void manageCrops() {
-        System.out.println("*** manageCrops() called. Coming soon.\n\n");
+        ManageCropsView view = new ManageCropsView();
+        view.displayView();
         pause(3000);
     }
 
     private void viewMap() {
-        System.out.println("*** viewMap() called. Coming soon.\n\n");
+        MapView view = new MapView();
+        view.displayView();
         pause(3000);
     }
 
     private void moveLocation() {
-        System.out.println("*** moveLocation() called. Coming soon.\n\n");
+        MoveLocationView view = new MoveLocationView();
+        view.displayView();
         pause(3000);
     }
 
