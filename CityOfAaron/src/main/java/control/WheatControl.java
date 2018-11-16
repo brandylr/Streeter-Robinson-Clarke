@@ -12,11 +12,8 @@ package control;
 public class WheatControl {
 
     
-    public static int calculateLossToRats(double tithesPercent, int totalWheat){
-       if (tithesPercent < 0) {
-           return -1;
-       }
-       if (totalWheat < 0){
+    public static int calculateLossToRats(int tithesPercent, int totalWheat){
+       if (tithesPercent < 0 || totalWheat < 0) {
            return -1;
        }
        
