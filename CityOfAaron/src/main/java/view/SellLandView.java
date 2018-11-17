@@ -9,33 +9,34 @@ package view;
  *
  * @author brobinson
  */
-public class MapView extends ViewBase {
+public class SellLandView extends ViewBase {
     
     /**
      * Constructor
      */
-    public MapView(){
-        super();    
+    public SellLandView(){
+        super();
     }
     
     @Override
     protected String getMessage() {
-        return "Welcome to the map.\n"
-                + "On your map you'll be able to locate the village, the Temple,\n"
-                + "the wheat fields, any undeveloped land, the river, the storehouse,\n"
-                + "and the area where you hold court.\n";  
+        return "You have chosen to sell some acres of land?.\n";
     }
     
     /**
      * Get the set of inputs from the user.
-     * @return 
+     * @return
      */
     @Override
     public String[] getInputs() {
+    
+        // Declare the array to have the number of elements you intend to get 
+        // from the user.
+        String[] inputs = new String[1];
         
-        // This view is not interactive. All it does is show the map. 
+        inputs[0] = getUserInput("Enter the number of acres you want to sell.");
         
-        return null;
+        return inputs;
     }
     
     /**
@@ -46,10 +47,10 @@ public class MapView extends ViewBase {
      */
     @Override
     public boolean doAction(String[] inputs){
-        
-        pause(2000);
-        
+        System.out.println("Thank you for your selection.\n"
+                + "This function is not ready. Coming soon");
         return false;
+        
     }
     
 }

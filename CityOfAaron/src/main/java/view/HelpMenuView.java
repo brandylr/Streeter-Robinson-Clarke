@@ -1,26 +1,22 @@
 
 package view;
 
-import java.util.Scanner;
-
 /**
  *
  * @author kanderson
  */
-public class HelpMenuView {
-    
-    
-    /**
-     * The message that will be displayed by this view.
-     */
-    protected String message;
-    
+public class HelpMenuView extends ViewBase {
+ 
     /**
      * Constructor
      */
     public HelpMenuView(){
-        
-        message = "Select a topic for more information:\n"
+       super (); 
+    }
+    
+    @Override
+    protected String getMessage() {
+        return "Select a topic for more information:\n"
                 + "1 - What are the goals of the game?\n"
                 + "2 - Where is the City of Aaron?\n"
                 + "3 - How do I view the Map?\n"
@@ -30,55 +26,11 @@ public class HelpMenuView {
                 
     }
     
-    
-    /**
-     * Get the user's input. Keep prompting them until they enter a value.
-     * @param prompt
-     * @param allowEmpty - determine whether the user can enter no value (just a return key)
-     * @return 
-     */
-    protected String getUserInput(String prompt, boolean allowEmpty){
-        
-        Scanner keyboard = new Scanner(System.in);
-        String input = "";
-        boolean inputReceived = false;
-        
-        while(inputReceived == false){
-            
-            System.out.println(prompt);
-            input = keyboard.nextLine();
-            
-            // Make sure we avoid a null-pointer error.
-            if (input == null){
-                input = "";
-            }
-            
-            // Trim any trailing whitespace, including the carriage return.
-            input = input.trim();
-            
-            if (input.equals("") == false || allowEmpty == true){
-                inputReceived = true;
-            }
-        }
-        
-        return input;
-    }
-    
-    
-    /**
-     * An overloaded version of getUserInput that sets allowEmpty to false so we don't have 
-     * to type it ourselves.
-     * @param prompt
-     * @return 
-     */
-    protected String getUserInput(String prompt){
-        return getUserInput(prompt, false);
-    }
-    
     /**
      * Get the set of inputs from the user.
      * @return 
      */
+    @Override
     public String[] getInputs() {
         
         // Declare the array to have the number of elements you intend to get 
@@ -99,6 +51,7 @@ public class HelpMenuView {
      * @return true if the view should repeat itself, and false if the view
      * should exit and return to the previous view.
      */
+    @Override
     public boolean doAction(String[] inputs){
         
         switch (inputs[0].trim().toUpperCase()){
@@ -106,7 +59,7 @@ public class HelpMenuView {
                 helpGoals();
                 break;
             case "2":
-                helpCityOfArron();
+                helpCityOfAaron();
                 break;
             case "3":
                 helpMap();
@@ -119,33 +72,18 @@ public class HelpMenuView {
                 break;
             case "6":
                 System.out.println("Back to Main Menu...");
+                pause(1000);
                 return false;
+            default: 
+                System.out.println(
+                "\n*********************************\n"
+                + "Invalid option chosen, try again.\n"
+                + "*********************************\n\n");
+                pause(1000);
+                return true;  
         }
-        return false;
+        return true;
     }
-    
-    
-    /**
-     * Control this view's display/prompt/action loop until the user
-     * chooses and action that causes this view to close.
-     */
-    public void displayView(){
-        
-        boolean keepGoing = true;
-        
-        while(keepGoing == true){
-            
-            System.out.println(message);
-            String[] inputs = getInputs();
-            keepGoing = doAction(inputs);
-        }
-    }
-    
-    
-    // Define your action handlers here. These are the methods that your doAction()
-    // method will call based on the user's input. We don't want to do a lot of 
-    // complex game stuff in our doAction() method. It will get messy very quickly.
-    
     
     private void helpGoals(){
         System.out.println("What are the goals of the game?\n"
@@ -153,27 +91,27 @@ public class HelpMenuView {
         HelpMenuView view = new HelpMenuView();
          view.displayView();
     }
-    private void helpCityOfArron(){
+    private void helpCityOfAaron(){
         System.out.println("Where is the city of Aaron?\n"
-                + "In an important place.\n");
+                + "The City of Aaron is in the vicinity of Ammonihah, near the cities of Moroni and Nephihah.\n");
         HelpMenuView view = new HelpMenuView();
          view.displayView();
     }
     private void helpMap(){
         System.out.println("How do I view the map?\n"
-                + "By selecting the correct option.\n");
+                + "You view the map by selecting option 2 in the Game Menu.\n");
         HelpMenuView view = new HelpMenuView();
          view.displayView();
     }
     private void helpMove(){
         System.out.println("How do I move to another location?\n"
-                + "The user will be prompted to enter in the location of the coordinates on the map that they want to move to.\n");
+                + "You will be prompted to enter in the location of the coordinates on the map that you want to move to.\n");
         HelpMenuView view = new HelpMenuView();
          view.displayView();
     }
     private void helpDisplay(){
-        System.out.println("How do I display a list of animals, provisions and tools in the City Storehouse?\n"
-                + "By selecting the correct option, of course.\n");
+        System.out.println("How do I display a list of animals, provisions, and tools in the City Storehouse?\n"
+                + "You can see a list of animals, provisions, and tools by going to the Reports Menu.\n");
         HelpMenuView view = new HelpMenuView();
          view.displayView();
     }
