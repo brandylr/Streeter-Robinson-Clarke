@@ -88,7 +88,8 @@ public class ManageCropsView extends ViewBase {
     }
     
     private void buyLand(){
-        System.out.println("*** buyLand() called. Coming soon");
+        BuyLandView view = new BuyLandView();
+        view.displayView();
         pause(2000);
     }
     
@@ -99,12 +100,14 @@ public class ManageCropsView extends ViewBase {
     }
     
     private void feedPeople(){
-        System.out.println("*** feedPeople() called. Coming soon");
+        FeedPeopleView view = new FeedPeopleView();
+        view.displayView();
         pause(2000);
     }
     
     private void plantCrops(){
-        System.out.println("*** PlantCrops() called. Coming soon");
+        PlantCropsView view = new PlantCropsView();
+        view.displayView();
         pause(2000);
     }
     
