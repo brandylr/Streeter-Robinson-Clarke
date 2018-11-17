@@ -33,32 +33,43 @@ public class CalculateHarvestTest {
     }
     @Test
     public void testCase1(){
-       int result = CalculateHarvest.calculateHarvest(-1, 10);
-        assertEquals(-1, result);  
+       int result = CalculateHarvest.calculateHarvest(10, 10);
+         int lowHarvest = 10 * 2;
+        int highHarvest = 10 * 4;
+        assertTrue(result >= lowHarvest && result <= highHarvest);;  
     }
     @Test
     public void testCase2(){
        int result = CalculateHarvest.calculateHarvest(-10, 40);
-        assertEquals(-1, result);  
+       int lowHarvest = 10 * -10;
+        int highHarvest = 10 * 40;
+        assertTrue(result >= lowHarvest && result <= highHarvest);
     }
     @Test
     public void testCase3(){
-       int result = CalculateHarvest.calculateHarvest(40, -10);
-        assertEquals(-2, result);  
+       int result = CalculateHarvest.calculateHarvest(-14, 7);
+        int lowHarvest = 10 * -14;
+        int highHarvest = 10 * 7;
+        assertTrue(result >= lowHarvest && result <= highHarvest);  
     }
     @Test
     public void testCase4(){
-       int result = CalculateHarvest.calculateHarvest(-1, -1);
-        assertEquals(-1, result);  
+       int result = CalculateHarvest.calculateHarvest(-1, 10);
+        int lowHarvest = 10 * -1;
+        int highHarvest = 10 * 10;
+        assertTrue(result >= lowHarvest && result <= highHarvest);  
     }
     @Test
     public void testCase5(){
        int result = CalculateHarvest.calculateHarvest((int) 0.001, 10);
-        assertEquals(0, result);  
+        assertEquals(0, result, 0.001);  
     }
     @Test
     public void testCase6(){
-       int result = CalculateHarvest.calculateHarvest(10, (int) 0.001);
-        assertEquals(20, result);  
+        int result = CalculateHarvest.calculateHarvest(10, 10);
+        int lowHarvest = 10 * 2;
+        int highHarvest = 10 * 4;
+        assertTrue(result >= lowHarvest && result <= highHarvest);
+            
     }
 }
