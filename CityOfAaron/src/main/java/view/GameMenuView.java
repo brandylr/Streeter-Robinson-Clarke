@@ -2,10 +2,6 @@ package view;
 
 import app.CityOfAaron;
 
-/**
- *
- * @author kanderson
- */
 public class GameMenuView extends ViewBase {
 
     /**
@@ -14,7 +10,7 @@ public class GameMenuView extends ViewBase {
     public GameMenuView() {
         super();
     }
-    
+
     @Override
     protected String getMessage() {
         return "\n\n\n"
@@ -36,7 +32,8 @@ public class GameMenuView extends ViewBase {
                 + "4 - View Annual Report\n"
                 + "5 - Live the Year\n"
                 + "6 - Save Game\n"
-                + "7 - Return to the Main Menu\n";
+                + "7 - Return to the Main Menu\n"
+                + "8 - EndGameView (test value)\n";
 
     }
 
@@ -45,7 +42,6 @@ public class GameMenuView extends ViewBase {
      *
      * @return
      */
-    
     @Override
     public String[] getInputs() {
 
@@ -89,7 +85,7 @@ public class GameMenuView extends ViewBase {
                 viewReport();
                 break;
             case "5":
-//                GameControl.liveTheYear(CityOfAaron.getCurrentGame(), CityOfAaron.getCurrentGame().getTithingAmount(), bushelsForFood, acresToPlant);
+                //  GameControl.liveTheYear(CityOfAaron.getCurrentGame(), CityOfAaron.getCurrentGame().getTithingAmount(), bushelsForFood, acresToPlant);
                 liveTheYearTemp();
                 break;
             case "6":
@@ -97,14 +93,16 @@ public class GameMenuView extends ViewBase {
                 break;
             case "7":
                 System.out.println("Exiting back to the Main Menu.\n\n");
-                pause(1000);
+                return false;
+            case "8":
+                endGame();
                 return false;
             default:
                 System.out.println(
                         "\n*********************************\n"
                         + "Invalid option chosen, try again.\n"
                         + "*********************************\n\n");
-                pause(3000);
+                pause(1000);
                 return true;
         }
 
@@ -113,23 +111,22 @@ public class GameMenuView extends ViewBase {
         // to the view that called it.
     }
 
-
     private void manageCrops() {
+        pause(300);
         ManageCropsView view = new ManageCropsView();
         view.displayView();
-        pause(3000);
     }
 
     private void viewMap() {
+        pause(300);
         MapView view = new MapView();
         view.displayView();
-        pause(3000);
     }
 
     private void moveLocation() {
+        pause(300);
         MoveLocationView view = new MoveLocationView();
         view.displayView();
-        pause(3000);
     }
 
     private void viewReport() {
@@ -138,12 +135,31 @@ public class GameMenuView extends ViewBase {
     }
 
     private void liveTheYearTemp() {
-        System.out.println("*** liveTheYear() called. Coming soon.\n\n");
-        pause(3000);
+        /**
+         * This is where we would trigger liveTheYear() and display the 
+         * resulting annual report. For now, we'll just show a temporary
+         * Annual Report View.
+         */
+        pause(300);
+        View annualReport = new AnnualReportView();
+        annualReport.displayView();
     }
 
     private void saveGame() {
-        System.out.println("*** saveGame() called. Coming soon.\n\n");
-        pause(3000);
+        pause(300);
+        View saveGame = new SaveGameView();
+        saveGame.displayView();
+    }
+    
+    private void mainMenu() {
+        pause(300);
+        View mainMenu = new MainMenuView();
+        mainMenu.displayView();
+    }
+    
+    private void endGame() {
+        pause(300);
+        View endGame = new EndGameView();
+        endGame.displayView();
     }
 }

@@ -62,9 +62,8 @@ public class MainMenuView extends ViewBase {
                 break;
             case "Q":
                 System.out.println("Thanks for playing. Until next time!");
-                return false;
+                System.exit(0);
             default:
-                pause(3000);
                 return true;
         }
 

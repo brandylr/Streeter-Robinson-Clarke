@@ -101,6 +101,7 @@ public abstract class ViewBase implements View {
                 Thread.sleep(time);
             } catch (InterruptedException exception) {
             }
+            System.out.println(".");
         }
     }
 
