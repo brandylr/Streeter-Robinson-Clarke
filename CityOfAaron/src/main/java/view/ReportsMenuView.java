@@ -1,6 +1,7 @@
 package view;
 
 import app.CityOfAaron;
+import java.util.Arrays;
 
 public class ReportsMenuView extends ViewBase {
 
@@ -13,6 +14,11 @@ public class ReportsMenuView extends ViewBase {
 
     @Override
     protected String getMessage() {
+        String AuthorArrayList = Arrays.toString(CityOfAaron.getCurrentGame().getTheStorehouse().getAuthors())
+                .replace(",", "") //remove the commas
+                .replace("[", "") //remove the right bracket
+                .replace("]", "") //remove the left bracket
+                .trim();
         return "\n\n\n"
                 + "**********************************************************\n"
                 + "****************Current Inventory Report******************\n"
@@ -24,10 +30,9 @@ public class ReportsMenuView extends ViewBase {
                 + "Animals: " + "\n"
                 + "Tools: " + "\n"
                 + "Provisions: " + "\n"
-                + "Authors: " + "\n"
+                + "Authors: \n " + AuthorArrayList + "\n"
                 + "**********************************************************\n"
-                + "**********************************************************\n"
-                + "Would you like to save this report to file?";
+                + "**********************************************************\n";
 
     }
 
@@ -43,7 +48,9 @@ public class ReportsMenuView extends ViewBase {
         // from the user.
         String[] inputs = new String[1];
 
-        inputs[0] = getUserInput("Y/N :");
+        inputs[0] = getUserInput(
+                "\n Would you like to save this report to file?\n"
+                + "Y/N :");
 
         // Repeat for each input you need, putting it into its proper slot in the array.
         return inputs;
@@ -87,7 +94,6 @@ public class ReportsMenuView extends ViewBase {
 
         return true;
     }
-
 
     private void saveReport() {
         System.out.println("*** saveReport() called. Coming soon.");

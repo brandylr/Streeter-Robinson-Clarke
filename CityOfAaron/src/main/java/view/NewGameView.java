@@ -3,6 +3,7 @@ package view;
 import model.Player;
 import model.Game;
 import app.CityOfAaron;
+import control.GameControl;
 
 public class NewGameView extends ViewBase {
 
@@ -69,11 +70,8 @@ public class NewGameView extends ViewBase {
     // complex game stuff in our doAction() method. It will get messy very quickly.
     private void createAndStartGame(String playerName) {
 
-        Player player = new Player();
-        player.setName(playerName);
 
-        Game game = new Game();
-        game.setThePlayer(player);
+        Game game = GameControl.createNewGame(playerName);
 
         CityOfAaron.setCurrentGame(game);
 

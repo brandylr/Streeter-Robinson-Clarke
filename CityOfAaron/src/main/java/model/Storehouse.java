@@ -5,18 +5,16 @@
  */
 package model;
 
+import app.CityOfAaron;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Arrays;
-
 
 /**
  *
  * @author arthu
  */
 public class Storehouse implements Serializable {
-    
-    public ArrayList<Author> authors;
+
+    public Author[] authors;
     public Animal[] animals;
     public InventoryItem[] tools;
     public Provision[] provisions;
@@ -24,13 +22,12 @@ public class Storehouse implements Serializable {
     public Storehouse() {
     }
 
-    
-    
-    public ArrayList<Author> getAuthors() {
+
+    public Author[] getAuthors() {
         return authors;
     }
 
-    public void setAuthors(ArrayList<Author> authors) {
+    public void setAuthors(Author[] authors) {
         this.authors = authors;
     }
 
@@ -60,13 +57,12 @@ public class Storehouse implements Serializable {
 
     @Override
     public String toString() {
-        return "Storehouse{" 
-                + "authors=" + authors 
-                + ", animals=" + animals 
-                + ", tools=" + tools 
-                + ", provisions=" + provisions 
+        return "Storehouse{"
+                + "authors=" + authors
+                + ", animals=" + animals
+                + ", tools=" + tools
+                + ", provisions=" + provisions
                 + " }";
     }
 
-    
 }

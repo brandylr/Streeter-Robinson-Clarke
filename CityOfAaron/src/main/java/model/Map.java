@@ -1,32 +1,31 @@
-
 package model;
 
 import java.io.Serializable;
 import java.util.Arrays;
 import java.util.Objects;
 
-
 public class Map implements Serializable {
-    
+
     private Location[][] locations = new Location[5][5];
     private Point currentLocation;
 
     public Map() {
 
     }
-    
-    
 
     public Location[][] getLocations() {
         return locations;
     }
 
+    public void setLocations(Location[][] locations) {
+        this.locations = locations;
+    }
 
     public Point getCurrentLocation() {
         return currentLocation;
     }
 
-    public void setCurrentLocation(Point point) {
+    public void setCurrentLocation(Point currentLocation) {
         this.currentLocation = currentLocation;
     }
 
@@ -40,14 +39,12 @@ public class Map implements Serializable {
 
     @Override
     public String toString() {
-        return "Map{" 
-                + "locations=" + locations 
-                + ", currentLocation=" + currentLocation 
+        return "Map{"
+                + "locations=" + locations
+                + ", currentLocation=" + currentLocation
                 + '}';
     }
 
-    
-    
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
@@ -68,8 +65,5 @@ public class Map implements Serializable {
         }
         return true;
     }
-    
-    
-    
-    
+
 }

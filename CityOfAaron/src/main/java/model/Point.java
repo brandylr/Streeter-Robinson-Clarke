@@ -15,6 +15,11 @@ public class Point implements Serializable {
 
     public Point() {
     }
+    
+    public Point(int row, int column){
+        this.row = row;
+        this.column = column;
+    }
 
     public int getRow() {
         return row;

@@ -16,6 +16,12 @@ public class Location implements Serializable {
     public Location() {
     }
 
+    public Location(String mapSymbol, String name, String description, String[] tips){
+        setMapSymbol(mapSymbol);
+        setName(name);
+        setDescription(description);
+        setGameTips(tips);
+    }
     
     
     public String getName() {

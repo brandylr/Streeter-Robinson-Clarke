@@ -23,7 +23,30 @@ public class MapView extends ViewBase {
         return "Welcome to the map.\n"
                 + "On your map you'll be able to locate the village, the Temple,\n"
                 + "the wheat fields, any undeveloped land, the river, the storehouse,\n"
-                + "and the area where you hold court.\n";  
+                + "and the area where you hold court.\n"
+                + "\n"
+                + "|---------------------------------|\n"
+                + "|---|U|---|U|---|F|---|V|---|R|---|\n"
+                + "|---------------------------------|\n"
+                + "|---|U|---|R|---|R|---|R|---|B|---|\n"
+                + "|---------------------------------|\n"
+                + "|---|R|---|T|---|C|---|W|---|B|---|\n"
+                + "|---------------------------------|\n"
+                + "|---|F|---|F|---|S|---|V|---|B|---|\n"
+                + "|---------------------------------|\n"
+                + "|---|F|---|F|---|F|---|V|---|B|---|\n"
+                + "|---------------------------------|\n"
+                + "\n"
+                + "Map Key: \n"
+                + "U = Undeveloped Land\n"
+                + "F = Fields\n"
+                + "V = Village\n"
+                + "R = River\n"
+                + "T = Temple\n"
+                + "C = Courthouse\n"
+                + "W = Watchtower\n"
+                + "S = Storehouse\n"
+                + "B = Borderline\n";
     }
     
     /**

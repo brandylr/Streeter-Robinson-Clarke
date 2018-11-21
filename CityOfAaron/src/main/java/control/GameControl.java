@@ -5,9 +5,14 @@
  */
 package control;
 
+import app.CityOfAaron;
 import java.util.Random;
 import model.AnnualReport;
+import model.Author;
 import model.Game;
+import model.Map;
+import model.Player;
+import model.Storehouse;
 
 /**
  *
@@ -71,6 +76,38 @@ public class GameControl {
         return (new Random().nextInt(highVal + 1 - lowVal) + lowVal );
     }
     
+    public static Game createNewGame(String playerName) {
+        
+        Player player = new Player();
+        player.setName(playerName);
+        
+        Game game = new Game();
+        game.setThePlayer(player);
+        
+        game.setCurrentPopulation(100);
+        game.setAcresOwned(1000);
+        game.setWheatInStorage(3000);
+        
+        Map theMap = MapControl.createMap();
+        game.setTheMap(theMap);
+        
+        /**
+         * Set the Storehouse here & list of Authors
+         */
+        Storehouse storehouse = new Storehouse();
+        Author[] author = {
+            new Author("Arthur", "Programmer"),
+            new Author("Brandy", "Programmer"),
+            new Author("Jon", "Programmer")
+        };
+        
+        storehouse.setAuthors(author);
+        game.setTheStorehouse(storehouse);
+        
+        return game;
+        
+        
+    }
 }
 
     

@@ -12,6 +12,13 @@ public class Author implements Serializable {
     public Author() {
     }
     
+    public Author(String name, String title){
+        setName(name);
+        setTitle(title);
+    }
+    
+
+    
     public String getName() {
         return name;
     }
@@ -41,10 +48,8 @@ public class Author implements Serializable {
 
         @Override
     public String toString() {
-        return "Author{" 
-                + "name=" + name 
-                + ", title=" + title 
-                + " }";
+        return "Author: " + name
+                + " Title: " + title + "\n";
     }
     
     @Override
