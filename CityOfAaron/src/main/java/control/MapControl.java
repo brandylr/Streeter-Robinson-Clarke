@@ -3,7 +3,6 @@ package control;
 
 import model.Location;
 import model.Map;
-import model.Game;
 import model.Point;
 
 public class MapControl {

@@ -1,7 +1,9 @@
 package view;
 
 import app.CityOfAaron;
+import control.StorehouseControl;
 import java.util.Arrays;
+import model.InventoryItem;
 
 public class ReportsMenuView extends ViewBase {
 
@@ -14,28 +16,15 @@ public class ReportsMenuView extends ViewBase {
 
     @Override
     protected String getMessage() {
-        String AuthorArrayList = Arrays.toString(CityOfAaron.getCurrentGame().getTheStorehouse().getAuthors())
-                .replace(",", "") //remove the commas
-                .replace("[", "") //remove the right bracket
-                .replace("]", "") //remove the left bracket
-                .trim();
-        return "\n\n\n"
-                + "**********************************************************\n"
-                + "****************Current Inventory Report******************\n"
-                + "**********************************************************\n"
-                + "Current Population: " + CityOfAaron.getCurrentGame().getCurrentPopulation() + "\n"
-                + "Acres Owned: " + CityOfAaron.getCurrentGame().getAcresOwned() + "\n"
-                + "Wheat In Storage: " + CityOfAaron.getCurrentGame().getWheatInStorage() + "\n"
-                + "Storehouse Inventory \n"
-                + "Animals: " + "\n"
-                + "Tools: " + "\n"
-                + "Provisions: " + "\n"
-                + "Authors: \n " + AuthorArrayList + "\n"
-                + "**********************************************************\n"
-                + "**********************************************************\n";
-
+        return "Select which report you would like to view:n\""
+                + "1 - Authors of Game\n"
+                + "2 - The Animals in the Storehouse\n"
+                + "3 - The Provisions in the Storehouse\n"
+                + "4 - The Tools in the Storehouse\n"
+                + "5 - Return to the Game Menu";
+                
     }
-
+                
     /**
      * Get the set of inputs from the user.
      *
@@ -48,9 +37,7 @@ public class ReportsMenuView extends ViewBase {
         // from the user.
         String[] inputs = new String[1];
 
-        inputs[0] = getUserInput(
-                "\n Would you like to save this report to file?\n"
-                + "Y/N :");
+        inputs[0] = getUserInput("Type in the number: ");
 
         // Repeat for each input you need, putting it into its proper slot in the array.
         return inputs;
@@ -73,15 +60,20 @@ public class ReportsMenuView extends ViewBase {
         // return false if you want this view to exit and return
         // to the view that called it.
         switch (inputs[0].trim().toUpperCase()) {
-            case "Y":
-                saveReport();
+            case "1":
+                authors();
                 break;
-            case "Yes":
-                saveReport();
+            case "2":
+                animals();
                 break;
-            case "N":
-                return false;
-            case "No":
+            case "3":
+                provisions();
+                break;           
+            case "4":
+                tools();
+                break;
+            case "5":
+                System.out.println("Back to Game Menu...");
                 return false;
             default:
                 System.out.println(
@@ -93,6 +85,37 @@ public class ReportsMenuView extends ViewBase {
         }
 
         return true;
+    }
+    
+    private void authors(){
+        System.out.println("Authors coming soon");
+    }
+    
+    private void animals(){
+        System.out.println("Animals coming soon");
+    }
+    
+    private void provisions(){
+        System.out.println("Provisions coming soon");
+    }
+    
+    private void tools(){
+       InventoryItem[] tool = StorehouseControl.createTools();
+       
+       for (int i = 0; i < tool.length - 1; i++) {
+           for (int j = i+1; j < tool.length; j++) {
+               if (tool[i].getName().compareTo(tool[j].getName() ) > 0) {
+                   InventoryItem temp = tool[i];
+                   tool[i] = tool[j];
+                   tool[j] = temp;
+               }
+           }
+       }
+        for (InventoryItem inventoryItem : tool) {
+            System.out.println(inventoryItem);
+        }
+       
+       
     }
 
     private void saveReport() {
