@@ -12,6 +12,7 @@ import model.Author;
 import model.Game;
 import model.Map;
 import model.Player;
+import model.Provision;
 import model.Storehouse;
 
 /**

@@ -22,9 +22,9 @@ public class ReportsMenuView extends ViewBase {
                 + "3 - The Provisions in the Storehouse\n"
                 + "4 - The Tools in the Storehouse\n"
                 + "5 - Return to the Game Menu";
-                
+
     }
-                
+
     /**
      * Get the set of inputs from the user.
      *
@@ -68,7 +68,7 @@ public class ReportsMenuView extends ViewBase {
                 break;
             case "3":
                 provisions();
-                break;           
+                break;
             case "4":
                 tools();
                 break;
@@ -86,36 +86,48 @@ public class ReportsMenuView extends ViewBase {
 
         return true;
     }
-    
-    private void authors(){
+
+    private void authors() {
         System.out.println("Authors coming soon");
     }
-    
-    private void animals(){
+
+    private void animals() {
         System.out.println("Animals coming soon");
     }
-    
-    private void provisions(){
-        System.out.println("Provisions coming soon");
+
+    private void provisions() {
+        InventoryItem[] provision = StorehouseControl.createProvisions();
+
+        for (int i = 0; i < provision.length - 1; i++) {
+            for (int j = i + 1; j < provision.length; j++) {
+                if (provision[i].getName().compareTo(provision[j].getName()) > 0) {
+                    InventoryItem temp = provision[i];
+                    provision[i] = provision[j];
+                    provision[j] = temp;
+                }
+            }
+        }
+        for (InventoryItem inventoryItem : provision) {
+            System.out.println(inventoryItem);
+        }
     }
-    
-    private void tools(){
-       InventoryItem[] tool = StorehouseControl.createTools();
-       
-       for (int i = 0; i < tool.length - 1; i++) {
-           for (int j = i+1; j < tool.length; j++) {
-               if (tool[i].getName().compareTo(tool[j].getName() ) > 0) {
-                   InventoryItem temp = tool[i];
-                   tool[i] = tool[j];
-                   tool[j] = temp;
-               }
-           }
-       }
+
+    private void tools() {
+        InventoryItem[] tool = StorehouseControl.createTools();
+
+        for (int i = 0; i < tool.length - 1; i++) {
+            for (int j = i + 1; j < tool.length; j++) {
+                if (tool[i].getName().compareTo(tool[j].getName()) > 0) {
+                    InventoryItem temp = tool[i];
+                    tool[i] = tool[j];
+                    tool[j] = temp;
+                }
+            }
+        }
         for (InventoryItem inventoryItem : tool) {
             System.out.println(inventoryItem);
         }
-       
-       
+
     }
 
     private void saveReport() {
