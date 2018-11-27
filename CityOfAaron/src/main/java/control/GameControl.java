@@ -7,6 +7,7 @@ package control;
 
 import app.CityOfAaron;
 import java.util.Random;
+import model.Animal;
 import model.AnnualReport;
 import model.Author;
 import model.Game;
@@ -101,8 +102,8 @@ public class GameControl {
             new Author("Brandy", "Programmer"),
             new Author("Jon", "Programmer")
         };
-        
         storehouse.setAuthors(author);
+        storehouse.setAnimals(control.StorehouseControl.createAnimals());
         game.setTheStorehouse(storehouse);
         
         return game;

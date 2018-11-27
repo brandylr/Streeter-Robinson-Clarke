@@ -3,6 +3,7 @@ package view;
 import app.CityOfAaron;
 import control.StorehouseControl;
 import java.util.Arrays;
+import model.Animal;
 import model.InventoryItem;
 
 public class ReportsMenuView extends ViewBase {
@@ -16,12 +17,12 @@ public class ReportsMenuView extends ViewBase {
 
     @Override
     protected String getMessage() {
-        return "Select which report you would like to view:n\""
+        return "Select which report you would like to view:\n"
                 + "1 - Authors of Game\n"
                 + "2 - The Animals in the Storehouse\n"
                 + "3 - The Provisions in the Storehouse\n"
                 + "4 - The Tools in the Storehouse\n"
-                + "5 - Return to the Game Menu";
+                + "5 - Return to the Game Menu\n";
 
     }
 
@@ -92,7 +93,30 @@ public class ReportsMenuView extends ViewBase {
     }
 
     private void animals() {
-        System.out.println("Animals coming soon");
+        Animal[] animals;
+        animals = CityOfAaron.getCurrentGame().getTheStorehouse().getAnimals();
+
+        for (int i = 0; i < animals.length - 1; i++) {
+            for (int j = i + 1; j < animals.length; j++) {
+                if ((animals[i].getAge() - animals[j].getAge()) > 0) {
+                    Animal temp = animals[i];
+                    animals[i] = animals[j];
+                    animals[j] = temp;
+                }
+            }
+        }
+        System.out.println("The following animals are stored in the Storehouse, sorted by age:");
+        for (Animal animal : animals) {
+            char vowel = animal.getType().charAt(0);
+            String article = "A ";
+
+            if (vowel == 'A' || vowel == 'E' || vowel == 'I' || vowel == 'O' || vowel == 'U') {
+                article = "An ";
+            }
+
+            System.out.println(article + animal.getType() + " at age: " + animal.getAge());
+        }
+        pause(3000);
     }
 
     private void provisions() {

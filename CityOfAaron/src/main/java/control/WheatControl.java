@@ -23,7 +23,7 @@ public class WheatControl {
        
        double tithingMultiplier = 0.01;
        
-       if (chanceForRats >= 1 && chanceForRats <= 30) {
+       if (chanceForRats >= 0 && chanceForRats <= 30) {
                 if (tithesPercent > 12) {
                     tithingMultiplier *= GameControl.getRandomNumber(3,5);
                     lossToRats = (int) Math.round(totalWheat * tithingMultiplier);

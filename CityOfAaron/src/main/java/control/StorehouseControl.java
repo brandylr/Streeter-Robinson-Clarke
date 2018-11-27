@@ -5,6 +5,7 @@
  */
 package control;
 
+import static control.GameControl.getRandomNumber;
 import model.InventoryItem;
 import model.Condition;
 import model.Storehouse;
@@ -48,5 +49,23 @@ public class StorehouseControl {
         provision[6] = new InventoryItem("clothes ", ItemType.Provisions, 30, Condition.FAIR);
 
         return provision;
+    }
+    
+    public static Animal[] createAnimals() {
+        Animal[] animal = new Animal[10];
+        
+        animal[0] = new Animal("Ox", getRandomNumber(3,10));
+        animal[1] = new Animal("Goat", getRandomNumber(3,10));
+        animal[2] = new Animal("Lamb", getRandomNumber(3,10));
+        animal[3] = new Animal("Dog", getRandomNumber(3,10));
+        animal[4] = new Animal("Chicken", getRandomNumber(3,10));
+        animal[5] = new Animal("Lamb", getRandomNumber(3,10));
+        animal[6] = new Animal("Horse", getRandomNumber(3,10));
+        animal[7] = new Animal("Eagle", getRandomNumber(3,10));
+        animal[8] = new Animal("Cow", getRandomNumber(3,10));
+        animal[9] = new Animal("Fish", getRandomNumber(3,10));
+        
+        return animal;
+
     }
 }
