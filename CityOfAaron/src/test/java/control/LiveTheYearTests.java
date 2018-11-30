@@ -1,5 +1,8 @@
 package control;
 
+import exceptions.CalculateHarvestException;
+import exceptions.GameControlException;
+import exceptions.LandControlException;
 import org.junit.Test;
 import org.junit.Before;
 
@@ -28,37 +31,37 @@ public class LiveTheYearTests {
 
 
     @Test
-    public void nullGameTest(){
+    public void nullGameTest() throws CalculateHarvestException, LandControlException, GameControlException{
         AnnualReport report = GameControl.liveTheYear(null, 0, 0, 0);
         assertNull(report);
     }
 
     @Test
-    public void lowTithingTest(){
+    public void lowTithingTest() throws CalculateHarvestException, LandControlException, GameControlException{
         AnnualReport report = GameControl.liveTheYear(game, -1, 0, 0);
         assertNull(report);
     }
     
     @Test
-    public void highTithingTest(){
+    public void highTithingTest() throws CalculateHarvestException, LandControlException, GameControlException{
         AnnualReport report = GameControl.liveTheYear(game, 101, 0, 0);
         assertNull(report);
     }
 
     @Test
-    public void lowBushelsTest(){
+    public void lowBushelsTest() throws CalculateHarvestException, LandControlException, GameControlException{
         AnnualReport report = GameControl.liveTheYear(game, 10, -1, 0);
         assertNull(report);
     }
 
     @Test
-    public void lowAcresTest(){
+    public void lowAcresTest() throws CalculateHarvestException, LandControlException, GameControlException{
         AnnualReport report = GameControl.liveTheYear(game, 10, 0, -1);
         assertNull(report);
     }
 
     @Test
-    public void liveTheYearTest() {
+    public void liveTheYearTest() throws CalculateHarvestException, LandControlException, GameControlException {
         final int TITHING = 10;
         final int ACRES_PLANTED = 1000;
 

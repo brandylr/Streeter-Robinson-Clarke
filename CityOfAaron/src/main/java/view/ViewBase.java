@@ -93,7 +93,7 @@ public abstract class ViewBase implements View {
      * Pause the program for the specified number of milliseconds.
      * @param time
      */
-    protected static void pause(int time) {
+    public static void pause(int time) {
         int i;
 
         for (i = 0; i < 3; i++) {

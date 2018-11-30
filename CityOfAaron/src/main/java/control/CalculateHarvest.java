@@ -5,21 +5,26 @@
  */
 package control;
 
+import exceptions.CalculateHarvestException;
+import exceptions.GameControlException;
 
 /**
  *
  * @author jonclarkes
  */
 public class CalculateHarvest {
-    public static int calculateHarvest(int acresPlanted, int tithesPercent){
-       // Calculate the amount of wheat harvested, based on the percentage
+
+    public static int calculateHarvest(int acresPlanted, int tithesPercent)
+            throws CalculateHarvestException, GameControlException {
+
+// Calculate the amount of wheat harvested, based on the percentage
         // of tithing paid. Assume that GameControl.getRandomNumber(low, high)
         // is available to be called.
         if (acresPlanted < 0) {
-            return -1;
+            throw new CalculateHarvestException("The acresPlanted cannot be negative.");
         }
         if (tithesPercent < 0 || tithesPercent > 100) {
-            return -2;
+            throw new CalculateHarvestException("The tithesPercent value cannot be negative or greater than 100.");
         }
         int low = 1;
         int high = 5;
@@ -27,7 +32,7 @@ public class CalculateHarvest {
             low = 1;
             high = 3;
         }
-        if (tithesPercent >= 8 && tithesPercent < 12){
+        if (tithesPercent >= 8 && tithesPercent < 12) {
             low = 2;
             high = 4;
         }
@@ -40,10 +45,6 @@ public class CalculateHarvest {
         yield = (harvest * acresPlanted);
         System.out.println("Harvest Yield:" + yield);
         return yield;
- }
+    }
 
-  
-
-   
 }
-    

@@ -1,6 +1,7 @@
 package control;
 
 
+import exceptions.GameControlException;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -8,7 +9,7 @@ public class GetRandomNumberTests{
     
 
     @Test
-    public void testCase1(){
+    public void testCase1() throws GameControlException{
         int rndNumber;
         int lowVal = 1;
         int highVal = 3; 
@@ -26,7 +27,7 @@ public class GetRandomNumberTests{
     }
     
     @Test
-    public void testCase2(){
+    public void testCase2() throws GameControlException{
         int rndNumber;
         int lowVal = 3;
         int highVal = 1; 
@@ -42,7 +43,7 @@ public class GetRandomNumberTests{
     }
     
     @Test
-    public void testCase3(){
+    public void testCase3() throws GameControlException{
         int rndNumber;
         int lowVal = -3;
         int highVal = 5; 
@@ -59,7 +60,7 @@ public class GetRandomNumberTests{
     }
     
     @Test
-    public void testCase4(){
+    public void testCase4() throws GameControlException{
         int rndNumber;
         int lowVal = 4;
         int highVal = 4; 
@@ -76,7 +77,7 @@ public class GetRandomNumberTests{
     } 
     
     @Test
-    public void testCase5(){
+    public void testCase5() throws GameControlException{
         int rndNumber;
         int lowVal = 0;
         int highVal = 1; 
@@ -94,7 +95,7 @@ public class GetRandomNumberTests{
     }
         
     @Test
-    public void testCase6(){
+    public void testCase6() throws GameControlException{
         int rndNumber;
         int lowVal = 1;
         int highVal = 100; 

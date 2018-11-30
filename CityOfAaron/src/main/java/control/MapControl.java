@@ -12,7 +12,7 @@ public class MapControl {
     }
     
     
-    public static Map createMap(){
+    public static Map createMap() {
         //Create Map Object and assign Values to it
         Map map = new Map();
         int noOfRows = 5;
@@ -59,5 +59,20 @@ public class MapControl {
         return map;
     }
     
+    public static String showMap() {
+        return  "\n"
+                + "|---------------------------------|\n"
+                + "|---|U|---|U|---|F|---|V|---|R|---|\n"
+                + "|---------------------------------|\n"
+                + "|---|U|---|R|---|R|---|R|---|B|---|\n"
+                + "|---------------------------------|\n"
+                + "|---|R|---|T|---|C|---|W|---|B|---|\n"
+                + "|---------------------------------|\n"
+                + "|---|F|---|F|---|S|---|V|---|B|---|\n"
+                + "|---------------------------------|\n"
+                + "|---|F|---|F|---|F|---|V|---|B|---|\n"
+                + "|---------------------------------|\n"
+                + "\n";
+    }
     
 }

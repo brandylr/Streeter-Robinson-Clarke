@@ -6,6 +6,7 @@
 package model;
 
 import control.PopulationControl;
+import exceptions.GameControlException;
 import java.io.Serializable;
 
 /**
@@ -92,7 +93,8 @@ public class Game implements Serializable {
     public int getCurrentPopulation() {
         return currentPopulation;
     }
-    public int peopleMovedIn() {
+    public int peopleMovedIn()
+            throws GameControlException {
         return PopulationControl.calculateNewMoveIns(currentPopulation);
     }
     public void setCurrentPopulation(int currentPopulation) {

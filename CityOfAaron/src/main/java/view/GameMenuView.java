@@ -85,7 +85,7 @@ public class GameMenuView extends ViewBase {
                 viewReport();
                 break;
             case "5":
-                //  GameControl.liveTheYear(CityOfAaron.getCurrentGame(), CityOfAaron.getCurrentGame().getTithingAmount(), bushelsForFood, acresToPlant);
+                //  liveTheYear();
                 liveTheYearTemp();
                 break;
             case "6":

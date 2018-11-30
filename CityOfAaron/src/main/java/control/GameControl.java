@@ -6,6 +6,9 @@
 package control;
 
 import app.CityOfAaron;
+import exceptions.CalculateHarvestException;
+import exceptions.GameControlException;
+import exceptions.LandControlException;
 import java.util.Random;
 import model.Animal;
 import model.AnnualReport;
@@ -23,11 +26,21 @@ import model.Storehouse;
 public class GameControl {
     
     public static AnnualReport liveTheYear(
-        Game game, int tithesPercent, int bushelsForFood, int acresToPlant){
+        Game game, int tithesPercent, int bushelsForFood, int acresToPlant)
+            throws CalculateHarvestException, LandControlException, GameControlException{
         
-        if (game == null || tithesPercent < 0 || tithesPercent > 100 || bushelsForFood < 0 || acresToPlant < 0)
+        if (game == null)
         {
-            return null;
+            throw new GameControlException("The game cannot be null.");
+        }
+        if (acresToPlant < 0) {
+            throw new CalculateHarvestException("The acresToPlant value cannot be negative.");
+        }
+        if (bushelsForFood < 0) {
+           //throw new PopulationControlException("The bushelsForFood value cannot be negative.");
+        }
+        if(tithesPercent < 0 || tithesPercent > 100) {
+            //throw new WheatControlException("The tithesPercent value cannot be negative or greater than 100.");
         }
         AnnualReport report = new AnnualReport();
         report.setLandPrice(LandControl.getCurrentLandPrice());
@@ -61,24 +74,20 @@ public class GameControl {
     
     
     
-    public static int getRandomNumber(int lowVal, int highVal){
+    public static int getRandomNumber(int lowVal, int highVal)
+        throws GameControlException {
         
-        if (lowVal < 0) {
-            return -1;
+        if (lowVal < 0 || highVal <0) {
+            throw new GameControlException("The lowVal and highVal values cannot be negative.");
         }
-        if (highVal < 1) {
-            return -1;
-        }
-        if (lowVal == highVal) {
-            return -1;
-        }
-        if (highVal < lowVal) {
-            return -1;
+        if (lowVal == highVal || highVal < lowVal) {
+            throw new GameControlException("The lowVal cannot be equal to highVal or the highVal cannot be less than the lowVal.");
         }
         return (new Random().nextInt(highVal + 1 - lowVal) + lowVal );
     }
     
-    public static Game createNewGame(String playerName) {
+    public static Game createNewGame(String playerName)
+            throws  GameControlException {
         
         Player player = new Player();
         player.setName(playerName);

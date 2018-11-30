@@ -65,13 +65,13 @@ public class ReportsMenuView extends ViewBase {
                 authors();
                 break;
             case "2":
-                animals();
+                StorehouseControl.animals();
                 break;
             case "3":
-                provisions();
+                StorehouseControl.provisions();
                 break;
             case "4":
-                tools();
+                StorehouseControl.tools();
                 break;
             case "5":
                 System.out.println("Back to Game Menu...");
@@ -92,67 +92,7 @@ public class ReportsMenuView extends ViewBase {
         System.out.println("Authors coming soon");
     }
 
-    private void animals() {
-        Animal[] animals;
-        animals = CityOfAaron.getCurrentGame().getTheStorehouse().getAnimals();
-
-        for (int i = 0; i < animals.length - 1; i++) {
-            for (int j = i + 1; j < animals.length; j++) {
-                if ((animals[i].getAge() - animals[j].getAge()) > 0) {
-                    Animal temp = animals[i];
-                    animals[i] = animals[j];
-                    animals[j] = temp;
-                }
-            }
-        }
-        System.out.println("The following animals are stored in the Storehouse, sorted by age:");
-        for (Animal animal : animals) {
-            char vowel = animal.getType().charAt(0);
-            String article = "A ";
-
-            if (vowel == 'A' || vowel == 'E' || vowel == 'I' || vowel == 'O' || vowel == 'U') {
-                article = "An ";
-            }
-
-            System.out.println(article + animal.getType() + " at age: " + animal.getAge());
-        }
-        pause(3000);
-    }
-
-    private void provisions() {
-        InventoryItem[] provision = StorehouseControl.createProvisions();
-
-        for (int i = 0; i < provision.length - 1; i++) {
-            for (int j = i + 1; j < provision.length; j++) {
-                if (provision[i].getName().compareTo(provision[j].getName()) > 0) {
-                    InventoryItem temp = provision[i];
-                    provision[i] = provision[j];
-                    provision[j] = temp;
-                }
-            }
-        }
-        for (InventoryItem inventoryItem : provision) {
-            System.out.println(inventoryItem);
-        }
-    }
-
-    private void tools() {
-        InventoryItem[] tool = StorehouseControl.createTools();
-
-        for (int i = 0; i < tool.length - 1; i++) {
-            for (int j = i + 1; j < tool.length; j++) {
-                if (tool[i].getName().compareTo(tool[j].getName()) > 0) {
-                    InventoryItem temp = tool[i];
-                    tool[i] = tool[j];
-                    tool[j] = temp;
-                }
-            }
-        }
-        for (InventoryItem inventoryItem : tool) {
-            System.out.println(inventoryItem);
-        }
-
-    }
+    
 
     private void saveReport() {
         System.out.println("*** saveReport() called. Coming soon.");

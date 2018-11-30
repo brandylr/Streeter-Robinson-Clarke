@@ -5,16 +5,15 @@
  */
 package control;
 
-/**
- *
- * @author arthu
- */
+import exceptions.GameControlException;
+
 public class WheatControl {
 
     
-    public static int calculateLossToRats(int tithesPercent, int totalWheat){
+    public static int calculateLossToRats(int tithesPercent, int totalWheat)
+        throws GameControlException {
        if (tithesPercent < 0 || totalWheat < 0) {
-           return -1;
+           return -1; //throw new WheatControlException("The tithesPercent or the totalWheat cannot be negative.");
        }
        
        int chanceForRats = GameControl.getRandomNumber(1,100);

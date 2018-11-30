@@ -20,7 +20,7 @@ public class SellLandView extends ViewBase {
     
     @Override
     protected String getMessage() {
-        return "You have chosen to sell some acres of land?.\n";
+        return "You have chosen to sell some acres of land.\n";
     }
     
     /**
@@ -34,7 +34,7 @@ public class SellLandView extends ViewBase {
         // from the user.
         String[] inputs = new String[1];
         
-        inputs[0] = getUserInput("Enter the number of acres you want to sell.");
+        inputs[0] = getUserInput("Enter the number of acres you want to sell:");
         
         return inputs;
     }
