@@ -4,15 +4,19 @@ package control;
 import model.Location;
 import model.Map;
 import model.Point;
+import exceptions.MapControlException;
+
+
 
 public class MapControl {
-    
-    public MapControl(){
+
+   public MapControl(){
         
     }
     
     
-    public static Map createMap() {
+    public static Map createMap() 
+            throws MapControlException {
         //Create Map Object and assign Values to it
         Map map = new Map();
         int noOfRows = 5;
@@ -59,20 +63,23 @@ public class MapControl {
         return map;
     }
     
-    public static String showMap() {
-        return  "\n"
-                + "|---------------------------------|\n"
-                + "|---|U|---|U|---|F|---|V|---|R|---|\n"
-                + "|---------------------------------|\n"
-                + "|---|U|---|R|---|R|---|R|---|B|---|\n"
-                + "|---------------------------------|\n"
-                + "|---|R|---|T|---|C|---|W|---|B|---|\n"
-                + "|---------------------------------|\n"
-                + "|---|F|---|F|---|S|---|V|---|B|---|\n"
-                + "|---------------------------------|\n"
-                + "|---|F|---|F|---|F|---|V|---|B|---|\n"
-                + "|---------------------------------|\n"
-                + "\n";
-    }
+    /**
+     *
+     * @param i
+     * @param j
+     * @throws MapControlException
+     */
+    /*public static void displayMap(int i, int j) 
+            throws MapControlException {
+        Map map = MapControl.createMap();
+        Location[][] locations = map.getLocations();
+            for (i = 0; i < locations.length; i++) {
+                for (j = 0; j < locations[i].length; j++) {
+                    System.out.println(map.getLocations()[i][j].getMapSymbol());
+                }
+                System.out.println();
+                
+            }
+        }*/
     
 }

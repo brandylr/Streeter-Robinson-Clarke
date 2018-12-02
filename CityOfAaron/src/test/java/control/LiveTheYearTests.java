@@ -3,6 +3,7 @@ package control;
 import exceptions.CalculateHarvestException;
 import exceptions.GameControlException;
 import exceptions.LandControlException;
+import exceptions.PopulationControlException;
 import org.junit.Test;
 import org.junit.Before;
 
@@ -31,37 +32,37 @@ public class LiveTheYearTests {
 
 
     @Test
-    public void nullGameTest() throws CalculateHarvestException, LandControlException, GameControlException{
+    public void nullGameTest() throws CalculateHarvestException, LandControlException, GameControlException, PopulationControlException{
         AnnualReport report = GameControl.liveTheYear(null, 0, 0, 0);
         assertNull(report);
     }
 
     @Test
-    public void lowTithingTest() throws CalculateHarvestException, LandControlException, GameControlException{
+    public void lowTithingTest() throws CalculateHarvestException, LandControlException, GameControlException, PopulationControlException{
         AnnualReport report = GameControl.liveTheYear(game, -1, 0, 0);
         assertNull(report);
     }
     
     @Test
-    public void highTithingTest() throws CalculateHarvestException, LandControlException, GameControlException{
+    public void highTithingTest() throws CalculateHarvestException, LandControlException, GameControlException, PopulationControlException{
         AnnualReport report = GameControl.liveTheYear(game, 101, 0, 0);
         assertNull(report);
     }
 
     @Test
-    public void lowBushelsTest() throws CalculateHarvestException, LandControlException, GameControlException{
+    public void lowBushelsTest() throws CalculateHarvestException, LandControlException, GameControlException, PopulationControlException{
         AnnualReport report = GameControl.liveTheYear(game, 10, -1, 0);
         assertNull(report);
     }
 
     @Test
-    public void lowAcresTest() throws CalculateHarvestException, LandControlException, GameControlException{
+    public void lowAcresTest() throws CalculateHarvestException, LandControlException, GameControlException, PopulationControlException{
         AnnualReport report = GameControl.liveTheYear(game, 10, 0, -1);
         assertNull(report);
     }
 
     @Test
-    public void liveTheYearTest() throws CalculateHarvestException, LandControlException, GameControlException {
+    public void liveTheYearTest() throws CalculateHarvestException, LandControlException, GameControlException, PopulationControlException {
         final int TITHING = 10;
         final int ACRES_PLANTED = 1000;
 

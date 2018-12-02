@@ -12,17 +12,22 @@ public class StartProgramView extends ViewBase {
     @Override
     protected String getMessage() {
 
-        return "Welcome to the City of Aaron!\n"
-                + "You have been granted the power to rule the city. With that\n"
-                + "power, however, comes great responsibilty. It is up to you\n"
-                + "to buy or sell land. As ruler, you are to care for the needs\n"
-                + "of your citizens. You need to determine how much wheat to\n"
-                + "plant, set aside to feed said citizens, and to pay an annual\n"
-                + "tithe on harvested wheat. If you don't plan appropriately,\n"
-                + "and there isn't enough wheat for food, some of your citizens\n"
-                + "will starve and die. Too many die and you will be kicked out!\n"
+        return "-------------------------------------------------------------\n"
+                + "-                                                           -\n"
+                + "-              Welcome to the City of Aaron!                -\n"
+                + "-                                                           -\n"
+                + "-------------------------------------------------------------\n\n"
+                + "You have been granted the power to rule the city.\n"
+                + "With that power, however, comes great responsibilty.\n"
+                + "As ruler, you are to care for the needs of your citizens.\n"
+                + "You need to determine how much wheat to plant,\n"
+                + "set aside to feed said citizens, and to pay an annual\n"
+                + "tithe on harvested wheat. It is up to you to buy or sell land.\n"
+                + "If you don't plan appropriately, and there isn't enough wheat\n"
+                + "for food, some of your citizens will starve and die.\n"
+                + "Too many die and you will be kicked out!\n"
                 + "There is also the possibility of rats eating some of the wheat.\n"
-                + "Good luck!";
+                + "Good luck!\n";
 
     }
 

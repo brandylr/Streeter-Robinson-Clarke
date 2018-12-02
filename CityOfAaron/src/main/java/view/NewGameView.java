@@ -5,8 +5,8 @@ import model.Game;
 import app.CityOfAaron;
 import control.GameControl;
 import exceptions.GameControlException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import exceptions.MapControlException;
+
 
 public class NewGameView extends ViewBase {
 
@@ -64,9 +64,9 @@ public class NewGameView extends ViewBase {
         String playerName = inputs[0];
         try {
             createAndStartGame(playerName);
-        } catch (GameControlException ex) {
-            Logger.getLogger(NewGameView.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        } catch (GameControlException | MapControlException gce) {
+            System.out.println(gce.getMessage());
+        } 
 
         //return false so a loop doesn't occur.
         return false;
@@ -76,7 +76,7 @@ public class NewGameView extends ViewBase {
     // method will call based on the user's input. We don't want to do a lot of 
     // complex game stuff in our doAction() method. It will get messy very quickly.
     private void createAndStartGame(String playerName)
-            throws GameControlException {
+            throws GameControlException, MapControlException {
 
 
         Game game = GameControl.createNewGame(playerName);

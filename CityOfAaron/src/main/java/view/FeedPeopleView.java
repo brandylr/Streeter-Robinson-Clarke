@@ -1,5 +1,10 @@
 package view;
 
+import app.CityOfAaron;
+import control.PopulationControl;
+import exceptions.PopulationControlException;
+
+
 public class FeedPeopleView extends ViewBase {
 
     /**
@@ -11,7 +16,7 @@ public class FeedPeopleView extends ViewBase {
 
     @Override
     protected String getMessage() {
-        return "You have selected to feed the people?.\n";
+        return "You have selected to feed the people.\n";
 
     }
 
@@ -27,7 +32,7 @@ public class FeedPeopleView extends ViewBase {
         // from the user.
         String[] inputs = new String[1];
 
-        inputs[0] = getUserInput("Please enter how many bushels of grain to feed the people,");
+        inputs[0] = getUserInput("How many bushels of grain do you want to feed the people?");
 
         return inputs;
     }
@@ -41,8 +46,32 @@ public class FeedPeopleView extends ViewBase {
      */
     @Override
     public boolean doAction(String[] inputs) {
-        System.out.println("Thank you for your selection.\n"
-                + "This function is not ready. Coming soon");
+        if (inputs[0] == null || inputs[0].equals("")) {
+            System.out.println("No amount entered. Returning to Game Menu...");
+            
+            return false;
+        }
+        
+        try {
+        int bushelsForFood = Integer.parseInt(inputs[0]);
+        if (bushelsForFood < 0) {
+            PopulationControl.feedThePeople(bushelsForFood);
+            return true;
+        }
+        if (bushelsForFood > CityOfAaron.getCurrentGame().getWheatInStorage()) {
+            PopulationControl.feedThePeople(bushelsForFood);
+            return true;
+        }
+        
+            PopulationControl.feedThePeople(bushelsForFood);
+        
+        } catch(NumberFormatException ex) {
+            System.out.println("Please enter a number. ");
+            return true;
+        } catch (PopulationControlException pce) {
+            System.out.println(pce.getMessage());
+            return true;
+        }
         return false;
     }
 

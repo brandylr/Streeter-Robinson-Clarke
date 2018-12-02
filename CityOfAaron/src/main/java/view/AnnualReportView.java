@@ -1,6 +1,9 @@
 package view;
 
 import app.CityOfAaron;
+import exceptions.PopulationControlException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class AnnualReportView extends ViewBase {
 
@@ -29,6 +32,7 @@ public class AnnualReportView extends ViewBase {
                 + "Total Bushels of Wheat In Store: " + CityOfAaron.getCurrentGame().getWheatInStorage() + "\n"
                 + "**********************************************************\n"
                 + "**********************************************************\n";
+
 
     }
 

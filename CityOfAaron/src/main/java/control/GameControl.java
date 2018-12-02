@@ -9,6 +9,8 @@ import app.CityOfAaron;
 import exceptions.CalculateHarvestException;
 import exceptions.GameControlException;
 import exceptions.LandControlException;
+import exceptions.MapControlException;
+import exceptions.PopulationControlException;
 import java.util.Random;
 import model.Animal;
 import model.AnnualReport;
@@ -27,7 +29,7 @@ public class GameControl {
     
     public static AnnualReport liveTheYear(
         Game game, int tithesPercent, int bushelsForFood, int acresToPlant)
-            throws CalculateHarvestException, LandControlException, GameControlException{
+            throws CalculateHarvestException, LandControlException, GameControlException, PopulationControlException {
         
         if (game == null)
         {
@@ -37,7 +39,7 @@ public class GameControl {
             throw new CalculateHarvestException("The acresToPlant value cannot be negative.");
         }
         if (bushelsForFood < 0) {
-           //throw new PopulationControlException("The bushelsForFood value cannot be negative.");
+           throw new PopulationControlException("The bushelsForFood value cannot be negative.");
         }
         if(tithesPercent < 0 || tithesPercent > 100) {
             //throw new WheatControlException("The tithesPercent value cannot be negative or greater than 100.");
@@ -87,7 +89,7 @@ public class GameControl {
     }
     
     public static Game createNewGame(String playerName)
-            throws  GameControlException {
+            throws  GameControlException, MapControlException {
         
         Player player = new Player();
         player.setName(playerName);
