@@ -1,5 +1,7 @@
 package control;
 
+import exceptions.CalculateHarvestException;
+import exceptions.GameControlException;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -16,7 +18,7 @@ public class CalculateHarvestTest {
      * Test of calcHarvest method, of class CalculateHarvest.
      */
     @Test
-    public void testCalculateHarvest() {
+    public void testCalculateHarvest() throws CalculateHarvestException, GameControlException {
         System.out.println("calculateHarvest");
         int acresPlanted = 0;
         int tithesPercent = 0;
@@ -27,7 +29,7 @@ public class CalculateHarvestTest {
     }
 
     @Test
-    public void testCase1() {
+    public void testCase1() throws CalculateHarvestException, GameControlException {
         int result = CalculateHarvest.calculateHarvest(10, 10);
         int lowHarvest = 10 * 2;
         int highHarvest = 10 * 4;
@@ -35,7 +37,7 @@ public class CalculateHarvestTest {
     }
 
     @Test
-    public void testCase2() {
+    public void testCase2() throws CalculateHarvestException, GameControlException {
         int result = CalculateHarvest.calculateHarvest(-10, 40);
         int lowHarvest = 10 * -10;
         int highHarvest = 10 * 40;
@@ -43,7 +45,7 @@ public class CalculateHarvestTest {
     }
 
     @Test
-    public void testCase3() {
+    public void testCase3() throws CalculateHarvestException, GameControlException {
         int result = CalculateHarvest.calculateHarvest(-14, 7);
         int lowHarvest = 10 * -14;
         int highHarvest = 10 * 7;
@@ -51,7 +53,7 @@ public class CalculateHarvestTest {
     }
 
     @Test
-    public void testCase4() {
+    public void testCase4() throws CalculateHarvestException, GameControlException {
         int result = CalculateHarvest.calculateHarvest(-1, 10);
         int lowHarvest = 10 * -1;
         int highHarvest = 10 * 10;
@@ -59,13 +61,13 @@ public class CalculateHarvestTest {
     }
 
     @Test
-    public void testCase5() {
+    public void testCase5() throws CalculateHarvestException, GameControlException {
         int result = CalculateHarvest.calculateHarvest((int) 0.001, 10);
         assertEquals(0, result, 0.001);
     }
 
     @Test
-    public void testCase6() {
+    public void testCase6() throws CalculateHarvestException, GameControlException {
         int result = CalculateHarvest.calculateHarvest(10, 10);
         int lowHarvest = 10 * 2;
         int highHarvest = 10 * 4;

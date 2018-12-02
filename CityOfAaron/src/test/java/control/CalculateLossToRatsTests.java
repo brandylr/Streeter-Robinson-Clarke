@@ -5,6 +5,8 @@
  */
 package control;
 
+import exceptions.GameControlException;
+import exceptions.WheatControlException;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -15,7 +17,7 @@ import static org.junit.Assert.*;
 public class CalculateLossToRatsTests {
 
     @Test
-    public void testCase1() {
+    public void testCase1() throws GameControlException, WheatControlException {
         double tithesPaid = 13;
         int totalWheat = 1000;
         int afterRats;
@@ -35,7 +37,7 @@ public class CalculateLossToRatsTests {
     }
 
     @Test
-    public void testCase2() {
+    public void testCase2() throws GameControlException, WheatControlException {
         double tithesPaid = -3;
         int totalWheat = 1000;
         int afterRats;
@@ -55,7 +57,7 @@ public class CalculateLossToRatsTests {
     }
 
     @Test
-    public void testCase3() {
+    public void testCase3() throws GameControlException, WheatControlException {
         double tithesPaid = 3;
         int totalWheat = -1000;
         int afterRats;
@@ -75,7 +77,7 @@ public class CalculateLossToRatsTests {
     }
 
     @Test
-    public void testCase4() {
+    public void testCase4() throws GameControlException, WheatControlException {
         double tithesPaid = -3;
         int totalWheat = -1000;
         int afterRats;
@@ -95,7 +97,7 @@ public class CalculateLossToRatsTests {
     }
 
     @Test
-    public void testCase5() {
+    public void testCase5() throws GameControlException, WheatControlException {
         double tithesPaid = 0;
         int totalWheat = 1;
         int afterRats;
@@ -115,7 +117,7 @@ public class CalculateLossToRatsTests {
     }
 
     @Test
-    public void testCase6() {
+    public void testCase6() throws GameControlException, WheatControlException {
         double tithesPaid = 0;
         int totalWheat = 100000000;
         int afterRats;

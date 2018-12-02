@@ -1,6 +1,10 @@
 package view;
 
 import app.CityOfAaron;
+import control.WheatControl;
+import exceptions.GameControlException;
+import exceptions.LandControlException;
+import exceptions.WheatControlException;
 
 public class GameMenuView extends ViewBase {
 
@@ -85,8 +89,14 @@ public class GameMenuView extends ViewBase {
                 viewReport();
                 break;
             case "5":
-                //  liveTheYear();
-                liveTheYearTemp();
+        //Core method of game
+                try {
+                    liveTheYear();
+                } catch (WheatControlException | GameControlException | LandControlException ce) {
+                    System.out.println("Please enter a number");
+                    System.out.println(ce.getMessage());
+                } 
+               
                 break;
             case "6":
                 saveGame();
@@ -134,12 +144,15 @@ public class GameMenuView extends ViewBase {
         view.displayView();
     }
 
-    private void liveTheYearTemp() {
-        /**
-         * This is where we would trigger liveTheYear() and display the 
-         * resulting annual report. For now, we'll just show a temporary
-         * Annual Report View.
-         */
+    private void liveTheYear() throws WheatControlException, GameControlException, LandControlException {
+        System.out.println("\n-------------------------------------------------");
+        System.out.println("Calling point for methods in wheat control");
+        System.out.println("Let's tets functions for Live The Year");
+        WheatControl.calculateLossToRats(5, 10);
+        WheatControl.calculateLossToRats(6, 10);
+       
+        
+        
         pause(300);
         View annualReport = new AnnualReportView();
         annualReport.displayView();

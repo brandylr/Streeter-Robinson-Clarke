@@ -11,6 +11,7 @@ import exceptions.GameControlException;
 import exceptions.LandControlException;
 import exceptions.MapControlException;
 import exceptions.PopulationControlException;
+import exceptions.WheatControlException;
 import java.util.Random;
 import model.Animal;
 import model.AnnualReport;
@@ -29,7 +30,7 @@ public class GameControl {
     
     public static AnnualReport liveTheYear(
         Game game, int tithesPercent, int bushelsForFood, int acresToPlant)
-            throws CalculateHarvestException, LandControlException, GameControlException, PopulationControlException {
+            throws CalculateHarvestException, LandControlException, GameControlException, PopulationControlException, WheatControlException {
         
         if (game == null)
         {
