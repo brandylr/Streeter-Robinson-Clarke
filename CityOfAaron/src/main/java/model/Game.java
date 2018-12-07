@@ -5,9 +5,6 @@
  */
 package model;
 
-import control.PopulationControl;
-import exceptions.GameControlException;
-import exceptions.PopulationControlException;
 import java.io.Serializable;
 
 /**
@@ -95,14 +92,6 @@ public class Game implements Serializable {
 
     public int getCurrentPopulation() {
         return currentPopulation;
-    }
-    public int peopleMovedIn()
-            throws GameControlException {
-        return PopulationControl.calculateNewMoveIns(currentPopulation);
-    }    
-    public int peopleStarved()
-            throws PopulationControlException {
-        return PopulationControl.calculateMortality(bushelsForFood, currentPopulation);
     }
     
     public void setCurrentPopulation(int currentPopulation) {
