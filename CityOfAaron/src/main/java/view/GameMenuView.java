@@ -89,26 +89,26 @@ public class GameMenuView extends ViewBase {
                 viewReport();
                 break;
             case "5":
-        //Core method of game
+                //Core method of game
                 try {
                     liveTheYear();
                 } catch (WheatControlException | GameControlException | LandControlException ce) {
-                    System.out.println("Please enter a number");
-                    System.out.println(ce.getMessage());
-                } 
-               
+                    ErrorView.display(GameMenuView.class.getName(), "Please enter a number");
+                    ErrorView.display(GameMenuView.class.getName(), ce.getMessage());
+                }
+
                 break;
             case "6":
                 saveGame();
                 break;
             case "7":
-                System.out.println("Exiting back to the Main Menu.\n\n");
+                this.console.println("Exiting back to the Main Menu.\n\n");
                 return false;
             case "8":
                 endGame();
                 return false;
             default:
-                System.out.println(
+                ErrorView.display(GameMenuView.class.getName(),
                         "\n*********************************\n"
                         + "Invalid option chosen, try again.\n"
                         + "*********************************\n\n");
@@ -145,14 +145,13 @@ public class GameMenuView extends ViewBase {
     }
 
     private void liveTheYear() throws WheatControlException, GameControlException, LandControlException {
-        System.out.println("\n-------------------------------------------------");
-        System.out.println("Calling point for methods in wheat control");
-        System.out.println("Let's tets functions for Live The Year");
+        this.console.println(
+                "\n-------------------------------------------------"
+                + "Calling point for methods in wheat control\n"
+                + "Let's test functions for Live The Year\n");
         WheatControl.calculateLossToRats(5, 10);
         WheatControl.calculateLossToRats(6, 10);
-       
-        
-        
+
         pause(300);
         View annualReport = new AnnualReportView();
         annualReport.displayView();
@@ -163,13 +162,13 @@ public class GameMenuView extends ViewBase {
         View saveGame = new SaveGameView();
         saveGame.displayView();
     }
-    
+
     private void mainMenu() {
         pause(300);
         View mainMenu = new MainMenuView();
         mainMenu.displayView();
     }
-    
+
     private void endGame() {
         pause(300);
         View endGame = new EndGameView();

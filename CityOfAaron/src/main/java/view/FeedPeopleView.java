@@ -47,7 +47,7 @@ public class FeedPeopleView extends ViewBase {
     @Override
     public boolean doAction(String[] inputs) {
         if (inputs[0] == null || inputs[0].equals("")) {
-            System.out.println("No amount entered. Returning to Game Menu...");
+            ErrorView.display(FeedPeopleView.class.getName(), "No amount entered. Returning to Game Menu...");
             
             return false;
         }
@@ -66,10 +66,10 @@ public class FeedPeopleView extends ViewBase {
             PopulationControl.feedThePeople(bushelsForFood);
         
         } catch(NumberFormatException ex) {
-            System.out.println("Please enter a number. ");
+            ErrorView.display(FeedPeopleView.class.getName(), "Please enter a number. ");
             return true;
         } catch (PopulationControlException pce) {
-            System.out.println(pce.getMessage());
+            ErrorView.display(FeedPeopleView.class.getName(), pce.getMessage());
             return true;
         }
         return false;

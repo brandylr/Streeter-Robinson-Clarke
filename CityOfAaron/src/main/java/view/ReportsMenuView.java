@@ -74,10 +74,10 @@ public class ReportsMenuView extends ViewBase {
                 StorehouseControl.tools();
                 break;
             case "5":
-                System.out.println("Back to Game Menu...");
+                this.console.println("Back to Game Menu...");
                 return false;
             default:
-                System.out.println(
+                ErrorView.display(ReportsMenuView.class.getName(),
                         "\n*********************************\n"
                         + "Invalid option chosen, try again.\n"
                         + "*********************************");
@@ -89,13 +89,13 @@ public class ReportsMenuView extends ViewBase {
     }
 
     private void authors() {
-        System.out.println("Authors coming soon");
+        this.console.println("Authors coming soon");
     }
 
     
 
     private void saveReport() {
-        System.out.println("*** saveReport() called. Coming soon.");
+        this.console.println("*** saveReport() called. Coming soon.");
         pause(3000);
     }
 }

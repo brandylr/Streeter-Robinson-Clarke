@@ -57,7 +57,7 @@ public class NewGameView extends ViewBase {
         //doing the action. Returning false will take us back
         //to the main menu.
         if (inputs[0] == null || inputs[0].equals("")) {
-            System.out.println("No player name entered. Returning to the Main Menu...");
+            this.console.println("No player name entered. Returning to the Main Menu...");
             return false;
         }
 
@@ -65,7 +65,7 @@ public class NewGameView extends ViewBase {
         try {
             createAndStartGame(playerName);
         } catch (GameControlException | MapControlException gce) {
-            System.out.println(gce.getMessage());
+            ErrorView.display(NewGameView.class.getName(),gce.getMessage());
         } 
 
         //return false so a loop doesn't occur.

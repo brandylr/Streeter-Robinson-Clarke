@@ -61,8 +61,8 @@ public class MainMenuView extends ViewBase {
                 helpMenu();
                 break;
             case "Q":
-                System.out.println("Thanks for playing. Until next time!");
-                System.exit(0);
+                this.console.println("Thanks for playing. Until next time!");
+                return false;
             default:
                 return true;
         }

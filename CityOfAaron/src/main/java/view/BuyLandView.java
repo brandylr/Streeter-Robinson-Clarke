@@ -4,8 +4,6 @@ import control.LandControl;
 import static control.LandControl.getCurrentLandPrice;
 import exceptions.GameControlException;
 import exceptions.LandControlException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class BuyLandView extends ViewBase {
 
@@ -24,7 +22,7 @@ public class BuyLandView extends ViewBase {
                     + "----------------------------------------------\n"
                     + "Price of land is currently " + LandControl.getCurrentLandPrice() + " bushels per acre.\n";
         } catch (GameControlException | LandControlException gce) {
-            System.out.println(gce.getMessage());
+            ErrorView.display(BuyLandView.class.getName(), gce.getMessage());
         }
         return null;
     }
@@ -56,7 +54,7 @@ public class BuyLandView extends ViewBase {
     @Override
     public boolean doAction(String[] inputs) {
         if (inputs[0] == null || inputs[0].equals("")) {
-            System.out.println("No amount entered. Returning to Game Menu...");
+            ErrorView.display(BuyLandView.class.getName(), "No amount entered. Returning to Game Menu...");
             return false;
         }
         
@@ -68,10 +66,10 @@ public class BuyLandView extends ViewBase {
         }
             LandControl.buyLand(amountDesired, getCurrentLandPrice());
         } catch(NumberFormatException ex){
-            System.out.println("Please enter a number.");
+            ErrorView.display(BuyLandView.class.getName(), "Please enter a number.");
             return true;
         } catch (LandControlException | GameControlException lce) {
-            Logger.getLogger(BuyLandView.class.getName()).log(Level.SEVERE, null, lce);
+            ErrorView.display(BuyLandView.class.getName(), "");
         }
         
         

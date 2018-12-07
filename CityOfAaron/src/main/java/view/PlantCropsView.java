@@ -41,7 +41,7 @@ public class PlantCropsView extends ViewBase {
      */
       @Override
     public boolean doAction(String[] inputs){
-        System.out.println("Thank you for your selection.\n"
+        this.console.println("Thank you for your selection.\n"
                 + "This function is not ready. Coming soon");
         return false;
     }

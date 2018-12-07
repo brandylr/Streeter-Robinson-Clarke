@@ -73,10 +73,10 @@ public class ManageCropsView extends ViewBase {
                 payTithesOfferings();
                 break;
             case "G":
-                System.out.println("Return to Game Menu");
+                this.console.println("Return to Game Menu");
                 return false;
             default: 
-                System.out.println(
+                ErrorView.display(ManageCropsView.class.getName(), 
                 "\n*********************************\n"
                 + "Invalid option chosen, try again.\n"
                 + "*********************************\n\n");

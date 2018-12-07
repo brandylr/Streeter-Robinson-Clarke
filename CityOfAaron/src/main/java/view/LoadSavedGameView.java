@@ -1,5 +1,9 @@
 package view;
 
+import static control.GameControl.getGame;
+import exceptions.GameControlException;
+import java.io.IOException;
+
 public class LoadSavedGameView extends ViewBase {
 
     /**
@@ -12,7 +16,7 @@ public class LoadSavedGameView extends ViewBase {
 
     @Override
     protected String getMessage() {
-        return "Loading a saved game...\n\n";
+        return "Load your saved game.\n\n";
     }
 
     /**
@@ -23,27 +27,25 @@ public class LoadSavedGameView extends ViewBase {
     @Override
     public String[] getInputs() {
 
-        // Declare the array to have the number of elements you intend to get 
-        // from the user.
         String[] inputs = new String[1];
 
-        inputs[0] = getUserInput("You have selected to enter a file name");
+        inputs[0] = getUserInput("Type in the name of your saved game: ");
 
         // Repeat for each input you need, putting it into its proper slot in the array.
         return inputs;
     }
 
-    /**
-     * Perform the action indicated by the user's input.
-     *
-     * @param inputs
-     * @return true if the view should repeat itself, and false if the view
-     * should exit and return to the previous view.
-     */
     @Override
     public boolean doAction(String[] inputs) {
-        System.out.println("Thank you for your selection.\n"
-                + "This function is not ready. Coming soon");
+        String filePath = inputs[0];
+        try{
+            getGame(filePath);
+        }   catch(GameControlException | ClassNotFoundException | IOException ex) {
+            ErrorView.display(LoadSavedGameView.class.getName(), ex.getMessage());
+        }
+        GameMenuView view = new GameMenuView();
+        view.displayView();
+        
         return false;
 
     }

@@ -12,15 +12,21 @@ import exceptions.LandControlException;
 import exceptions.MapControlException;
 import exceptions.PopulationControlException;
 import exceptions.WheatControlException;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.Random;
-import model.Animal;
 import model.AnnualReport;
 import model.Author;
 import model.Game;
 import model.Map;
 import model.Player;
-import model.Provision;
 import model.Storehouse;
+import view.ErrorView;
+import static view.ViewBase.pause;
 
 /**
  *
@@ -29,11 +35,10 @@ import model.Storehouse;
 public class GameControl {
 
     public static AnnualReport liveTheYear(
-        Game game, int tithesPercent, int bushelsForFood, int acresToPlant)
+            Game game, int tithesPercent, int bushelsForFood, int acresToPlant)
             throws CalculateHarvestException, LandControlException, GameControlException, PopulationControlException, WheatControlException {
-        
-        if (game == null)
-        {
+
+        if (game == null) {
             throw new GameControlException("The game cannot be null.");
         }
         if (acresToPlant < 0) {
@@ -118,5 +123,38 @@ public class GameControl {
 
         return game;
 
+    }
+
+    public static void saveGame(String saveGameName, Game game) throws GameControlException {
+        if (game == null || saveGameName == null || saveGameName.length() < 1) {
+            throw new GameControlException("Game is invalid or the File Path is invalid.");
+        }
+        try (ObjectOutputStream out
+                = new ObjectOutputStream(new FileOutputStream(saveGameName))) {
+            out.writeObject(game);
+        } catch (IOException ex) {
+            System.out.println("File Not Found." + ex.getMessage());
+        }
+
+        System.out.println("Saving game as: " + saveGameName);
+        pause(1000);
+        System.out.println("Game has been saved!");
+
+        
+    }
+    
+    public static Game getGame(String filePath) throws GameControlException, IOException, ClassNotFoundException{
+        if(filePath == null || filePath.length() < 1){
+            throw new GameControlException("The Filepath entered doesn't exist.");
+        }
+        try (ObjectInputStream fis
+                = new ObjectInputStream(new FileInputStream(filePath))) {
+            Game game = (Game) fis.readObject();
+            CityOfAaron.setCurrentGame(game);
+            CityOfAaron.getCurrentGame().setThePlayer(game.getThePlayer());
+        }   catch(IOException ex){
+            System.out.println("File Not Found." + ex.getMessage());
+        }
+        return null;
     }
 }

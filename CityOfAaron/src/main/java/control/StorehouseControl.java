@@ -8,8 +8,6 @@ package control;
 import app.CityOfAaron;
 import static control.GameControl.getRandomNumber;
 import exceptions.GameControlException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import model.InventoryItem;
 import model.Condition;
 import model.Animal;

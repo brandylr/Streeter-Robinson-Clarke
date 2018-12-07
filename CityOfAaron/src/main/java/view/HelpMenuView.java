@@ -71,11 +71,11 @@ public class HelpMenuView extends ViewBase {
                 helpDisplay();
                 break;
             case "6":
-                System.out.println("Back to Main Menu...");
+                this.console.println("Back to Main Menu...");
                 pause(1000);
                 return false;
             default: 
-                System.out.println(
+                ErrorView.display(HelpMenuView.class.getName(), 
                 "\n*********************************\n"
                 + "Invalid option chosen, try again.\n"
                 + "*********************************\n\n");
@@ -85,34 +85,34 @@ public class HelpMenuView extends ViewBase {
         return true;
     }
     
-    private void helpGoals(){
-        System.out.println("What are the goals of the game?\n"
+    private boolean helpGoals(){
+        this.console.println("What are the goals of the game?\n"
                 + "Goals of the game are to survive every year.\n");
-        HelpMenuView view = new HelpMenuView();
-         view.displayView();
+        
+        return true;
     }
-    private void helpCityOfAaron(){
-        System.out.println("Where is the city of Aaron?\n"
+    private boolean helpCityOfAaron(){
+        this.console.println("Where is the city of Aaron?\n"
                 + "The City of Aaron is in the vicinity of Ammonihah, near the cities of Moroni and Nephihah.\n");
-        HelpMenuView view = new HelpMenuView();
-         view.displayView();
+        
+        return true;
     }
-    private void helpMap(){
-        System.out.println("How do I view the map?\n"
+    private boolean helpMap(){
+        this.console.println("How do I view the map?\n"
                 + "You view the map by selecting option 2 in the Game Menu.\n");
-        HelpMenuView view = new HelpMenuView();
-         view.displayView();
+        
+        return true;
     }
-    private void helpMove(){
-        System.out.println("How do I move to another location?\n"
+    private boolean helpMove(){
+        this.console.println("How do I move to another location?\n"
                 + "You will be prompted to enter in the location of the coordinates on the map that you want to move to.\n");
-        HelpMenuView view = new HelpMenuView();
-         view.displayView();
+        
+        return true;
     }
-    private void helpDisplay(){
-        System.out.println("How do I display a list of animals, provisions, and tools in the City Storehouse?\n"
+    private boolean helpDisplay(){
+        this.console.println("How do I display a list of animals, provisions, and tools in the City Storehouse?\n"
                 + "You can see a list of animals, provisions, and tools by going to the Reports Menu.\n");
-        HelpMenuView view = new HelpMenuView();
-         view.displayView();
+        
+        return true;
     }
 }

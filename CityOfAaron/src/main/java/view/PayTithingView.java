@@ -49,7 +49,7 @@ public class PayTithingView extends ViewBase {
      */
     @Override
     public boolean doAction(String[] inputs){
-        System.out.println("Thank you for entering your selection.\n"
+        this.console.println("Thank you for entering your selection.\n"
                 + "This function is not ready. Coming soon\n");
         return false;
         

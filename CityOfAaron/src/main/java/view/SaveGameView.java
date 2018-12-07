@@ -1,5 +1,11 @@
 package view;
 
+import app.CityOfAaron;
+import control.GameControl;
+import exceptions.GameControlException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import model.Game;
 
 public class SaveGameView extends ViewBase {
 
@@ -50,23 +56,20 @@ public class SaveGameView extends ViewBase {
         //doing the action. Returning false will take us back
         //to the main menu.
         if (inputs[0] == null || inputs[0].equals("")) {
-            System.out.println("No save game name entered. Returning to the Game Menu...");
+            this.console.println("No save game name entered. Returning to the Game Menu...");
             return false;
         }
 
-        String saveGameName = inputs[0];
-        saveGame(saveGameName);
+        String saveGameName = inputs[0].replaceAll("\\s+","").toLowerCase()+".txt";
+        Game game = CityOfAaron.getCurrentGame();
+        try {
+            GameControl.saveGame(saveGameName, game);
+        } catch (GameControlException gce) {
+            ErrorView.display(SaveGameView.class.getName(), gce.getMessage());
+        }
 
         //return false so a loop doesn't occur.
         return false;
-    }
-
-    private void saveGame(String saveGameName) {
-
-        System.out.println("Saving game as: " + saveGameName.replaceAll("\\s+","").toLowerCase() + ".save" ); 
-        pause(1000);
-        System.out.println("Once the function saveGame() is implemented, your game will have saved as: " + saveGameName.replaceAll("\\s+","").toLowerCase() + ".save" ); 
-
     }
 
 }

@@ -79,12 +79,12 @@ public class MapView extends ViewBase {
             for (int i = 0; i < locations.length; i++) {
                 
                 for ( int j = 0; j < locations[i].length; j++) {
-                    System.out.print(map.getLocations()[i][j].getMapSymbol() + " ");
+                    this.console.print(map.getLocations()[i][j].getMapSymbol() + " ");
                 }
-                System.out.println();
+                this.console.println();
             }
         } catch (MapControlException mce) {
-            System.out.println(mce.getMessage());
+            ErrorView.display(MapView.class.getName(), mce.getMessage());
         }
     }
 }

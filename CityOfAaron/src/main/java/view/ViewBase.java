@@ -1,6 +1,8 @@
 package view;
 
-import java.util.Scanner;
+import app.CityOfAaron;
+import java.io.BufferedReader;
+import java.io.PrintWriter;
 
 public abstract class ViewBase implements View {
 
@@ -16,6 +18,9 @@ public abstract class ViewBase implements View {
 ////            
 ////  @return
     protected abstract String[] getInputs();
+    
+    protected final BufferedReader keyboard = CityOfAaron.getInFile();
+    protected final PrintWriter console = CityOfAaron.getOutFile();
 
 //    Perform the action indicated by the user's input.
 //            
@@ -35,7 +40,7 @@ public abstract class ViewBase implements View {
             //Only print it if it is non-null
             String message = getMessage();
             if (message != null) {
-                System.out.println(getMessage());
+                this.console.println(getMessage());
             }
 
             String[] inputs = getInputs();
@@ -53,26 +58,30 @@ public abstract class ViewBase implements View {
      */
     protected String getUserInput(String prompt, boolean allowEmpty) {
 
-        Scanner keyboard = new Scanner(System.in);
+        //Scanner keyboard = new Scanner(System.in);
         String input = "";
         boolean inputReceived = false;
+        
+        try {
+            while (inputReceived == false) {
 
-        while (inputReceived == false) {
+                this.console.println(prompt);
+                input = this.keyboard.readLine();
 
-            System.out.println(prompt);
-            input = keyboard.nextLine();
+                // Make sure we avoid a null-pointer error.
+                if (input == null) {
+                    input = "";
+                }
 
-            // Make sure we avoid a null-pointer error.
-            if (input == null) {
-                input = "";
-            }
-
-            // Trim any trailing whitespace, including the carriage return.
-            input = input.trim();
+                // Trim any trailing whitespace, including the carriage return.
+                input = input.trim();
 
             if (input.equals("") == false || allowEmpty == true) {
                 inputReceived = true;
             }
+        }
+        } catch (Exception e) {
+            ErrorView.display(ViewBase.class.getName(), "Error reading input: " + e.getMessage());
         }
 
         return input;
