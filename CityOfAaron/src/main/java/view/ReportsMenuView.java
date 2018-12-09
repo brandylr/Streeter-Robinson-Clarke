@@ -82,9 +82,16 @@ public class ReportsMenuView extends ViewBase {
                 break;
             case "4":
                 StorehouseControl.tools();
+                String toolFileName = getUserInput("Type in what you would like to name the report file: ", true);
+                if (toolFileName != null || toolFileName.equals("")) {
+                    printToolReport(CityOfAaron.getCurrentGame().getTheStorehouse().tools, toolFileName.replaceAll("\\s+", "").toLowerCase() + ".txt");
+                    System.out.println("Saving report as: " + toolFileName.replaceAll("\\s+", "").toLowerCase() + ".txt");
+                    System.out.println("Report has been saved!");
+                }
                 break;
             case "5":
                 this.console.println("Back to Game Menu...");
+                        
                 return false;
             default:
                 ErrorView.display(ReportsMenuView.class.getName(),
@@ -102,7 +109,26 @@ public class ReportsMenuView extends ViewBase {
         this.console.println("Authors coming soon");
     }
 
+    public void printToolReport(InventoryItem[] item, String fileName) {
 
+        // create BufferedReader object for input file
+        try (PrintWriter out = new PrintWriter(new FileWriter(fileName))) {
+
+            // print title and column headings
+            out.println("\n\n           Tool Report           ");
+            out.printf("%n%-10s%10s%10s", "Tool Name", "Quantity", "Condition");
+            out.printf("%n%-10s%10s%10s", "---------", "--------", "---------");
+
+            //print the description, quatity and condition of each tool
+            for (InventoryItem inventoryItem : item) {
+                out.printf("%n%-10s%10d%10s", inventoryItem.getName(),
+                        inventoryItem.getQuantity(),
+                        inventoryItem.getCondition());
+            }
+        } catch (IOException ex) {
+            ErrorView.display(ReportsMenuView.class.getName(), ex.getMessage());
+        }
+    }
 
     public void printAnimalReport(Animal[] animals, String fileName) {
 
