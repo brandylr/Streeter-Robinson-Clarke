@@ -2,7 +2,10 @@ package view;
 
 import app.CityOfAaron;
 import control.StorehouseControl;
-import java.util.Arrays;
+import exceptions.GameControlException;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import model.Animal;
 import model.InventoryItem;
 
@@ -66,6 +69,13 @@ public class ReportsMenuView extends ViewBase {
                 break;
             case "2":
                 StorehouseControl.animals();
+                String animalsFileName = getUserInput("Type in what you would like to name the report file: ", true);
+                if (animalsFileName != null || animalsFileName.equals("")) {
+                    printAnimalReport(CityOfAaron.getCurrentGame().getTheStorehouse().animals, animalsFileName.replaceAll("\\s+", "").toLowerCase() + ".txt");
+                    System.out.println("Saving report as: " + animalsFileName.replaceAll("\\s+", "").toLowerCase() + ".txt");
+                    pause(500);
+                    System.out.println("Report has been saved!");
+                }
                 break;
             case "3":
                 StorehouseControl.provisions();
@@ -92,10 +102,26 @@ public class ReportsMenuView extends ViewBase {
         this.console.println("Authors coming soon");
     }
 
-    
 
-    private void saveReport() {
-        this.console.println("*** saveReport() called. Coming soon.");
-        pause(3000);
+
+    public void printAnimalReport(Animal[] animals, String fileName) {
+
+        // create BufferedReader object for input file
+        try (PrintWriter out = new PrintWriter(new FileWriter(fileName))) {
+
+            // print title and column headings
+            out.println("\n\n      Animal Report     ");
+            out.printf("%n%-15s%10s", "Animal Name", "Age");
+            out.printf("%n%-15s%10s", "-----------", "----");
+
+            //print the name and age of each animal
+            for (Animal animal : animals) {
+                out.printf("%n%-15s%10d", animal.getType(),
+                        animal.getAge());
+            }
+        } catch (IOException ex) {
+            ErrorView.display(ReportsMenuView.class.getName(), ex.getMessage());
+        }
     }
+
 }

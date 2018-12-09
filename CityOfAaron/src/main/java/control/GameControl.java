@@ -119,6 +119,13 @@ public class GameControl {
         };
         storehouse.setAuthors(author);
         storehouse.setAnimals(control.StorehouseControl.createAnimals());
+        storehouse.setTools(control.StorehouseControl.createTools());
+        /**
+         * Jon, I'm not exactly sure how to solve this little part. Do ask for
+         * help though, I'm sure we can figure out something.
+         *
+         * storehouse.setProvisions(control.StorehouseControl.createProvisions());
+         */
         game.setTheStorehouse(storehouse);
 
         return game;
@@ -140,11 +147,10 @@ public class GameControl {
         pause(1000);
         System.out.println("Game has been saved!");
 
-        
     }
-    
-    public static Game getGame(String filePath) throws GameControlException, IOException, ClassNotFoundException{
-        if(filePath == null || filePath.length() < 1){
+
+    public static Game getGame(String filePath) throws GameControlException, IOException, ClassNotFoundException {
+        if (filePath == null || filePath.length() < 1) {
             throw new GameControlException("The Filepath entered doesn't exist.");
         }
         try (ObjectInputStream fis
@@ -152,7 +158,7 @@ public class GameControl {
             Game game = (Game) fis.readObject();
             CityOfAaron.setCurrentGame(game);
             CityOfAaron.getCurrentGame().setThePlayer(game.getThePlayer());
-        }   catch(IOException ex){
+        } catch (IOException ex) {
             System.out.println("File Not Found." + ex.getMessage());
         }
         return null;
