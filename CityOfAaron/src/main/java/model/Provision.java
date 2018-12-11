@@ -6,35 +6,45 @@
 package model;
 
 import java.io.Serializable;
-import java.util.Objects;
 
 /**
  *
  * @author brobinson
  */
-public class Provision extends InventoryItem implements Serializable {
-    
-    private boolean perishable;
-    
-    public Provision(){
-        
+public class Provision implements Serializable {
+
+    private int age;
+    private String type;
+
+    public Provision() {
+
     }
-    
-    public boolean isPerishable(){
-        return perishable;
+
+    public Provision(String type, int age) {
+        setType(type);
+        setAge(age);
     }
-    
-    public void setIsPerishable(boolean perishable){
-        this.perishable = perishable;
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 
     @Override
     public String toString() {
-        return "Provision{" 
-                + "perishable=" + perishable 
-                + " }";
+        return "Provision{" + "age=" + age + '}';
+
     }
-    
-    
-    
+
 }

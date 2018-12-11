@@ -24,6 +24,7 @@ import model.Author;
 import model.Game;
 import model.Map;
 import model.Player;
+import model.Provision;
 import model.Storehouse;
 import view.ErrorView;
 import static view.ViewBase.pause;
@@ -117,15 +118,12 @@ public class GameControl {
             new Author("Brandy", "Programmer"),
             new Author("Jon", "Programmer")
         };
+       
         storehouse.setAuthors(author);
         storehouse.setAnimals(control.StorehouseControl.createAnimals());
         storehouse.setTools(control.StorehouseControl.createTools());
-        /**
-         * Jon, I'm not exactly sure how to solve this little part. Do ask for
-         * help though, I'm sure we can figure out something.
-         *
-         * storehouse.setProvisions(control.StorehouseControl.createProvisions());
-         */
+        storehouse.setProvisions(control.StorehouseControl.createProvisions());
+
         game.setTheStorehouse(storehouse);
 
         return game;

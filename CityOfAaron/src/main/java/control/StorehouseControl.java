@@ -12,6 +12,7 @@ import model.InventoryItem;
 import model.Condition;
 import model.Animal;
 import model.ItemType;
+import model.Provision;
 import static view.ViewBase.pause;
 
 /**
@@ -38,18 +39,21 @@ public class StorehouseControl {
 
     }
 
-    public static InventoryItem[] createProvisions() {
-        InventoryItem[] provision = new InventoryItem[7];
+    public static Provision[] createProvisions()
+            throws GameControlException {
 
-        provision[0] = new InventoryItem("bread ", ItemType.Provisions, 10, Condition.GOOD);
-        provision[1] = new InventoryItem("meats ", ItemType.Provisions, 30, Condition.GOOD);
-        provision[2] = new InventoryItem("milk ", ItemType.Provisions, 10, Condition.GOOD);
-        provision[3] = new InventoryItem("water ", ItemType.Provisions, 30, Condition.GOOD);
-        provision[4] = new InventoryItem("bedding ", ItemType.Provisions, 20, Condition.GOOD);
-        provision[5] = new InventoryItem("tents ", ItemType.Provisions, 8, Condition.FAIR);
-        provision[6] = new InventoryItem("clothes ", ItemType.Provisions, 30, Condition.FAIR);
+        Provision[] provision = new Provision[7];
+
+        provision[0] = new Provision("bread", getRandomNumber(3, 10));
+        provision[1] = new Provision("meats", getRandomNumber(3, 10));
+        provision[2] = new Provision("milk", getRandomNumber(3, 10));
+        provision[3] = new Provision("water", getRandomNumber(3, 10));
+        provision[4] = new Provision("bedding", getRandomNumber(3, 10));
+        provision[5] = new Provision("tents", getRandomNumber(3, 10));
+        provision[6] = new Provision("clothes", getRandomNumber(3, 10));
 
         return provision;
+
     }
 
     public static Animal[] createAnimals()
@@ -99,22 +103,30 @@ public class StorehouseControl {
     }
 
     public static void provisions() {
+        Provision[] provisions;
+        provisions = CityOfAaron.getCurrentGame().getTheStorehouse().getProvisions();
 
-        InventoryItem[] provision = StorehouseControl.createProvisions();
-
-        for (int i = 0; i < provision.length - 1; i++) {
-            for (int j = i + 1; j < provision.length; j++) {
-                if (provision[i].getName().compareTo(provision[j].getName()) > 0) {
-                    InventoryItem temp = provision[i];
-                    provision[i] = provision[j];
-                    provision[j] = temp;
+        for (int i = 0; i < provisions.length - 1; i++) {
+            for (int j = i + 1; j < provisions.length; j++) {
+                if ((provisions[i].getAge() - provisions[j].getAge()) > 0) {
+                    Provision temp = provisions[i];
+                    provisions[i] = provisions[j];
+                    provisions[j] = temp;
                 }
             }
         }
-        for (InventoryItem inventoryItem : provision) {
-            System.out.println(inventoryItem);
+        System.out.println("The following provisions are stored in the Storehouse, sorted by age:");
+        for (Provision provision : provisions) {
+            char vowel = provision.getType().charAt(0);
+            String article = "A ";
+
+            if (vowel == 'A' || vowel == 'E' || vowel == 'I' || vowel == 'O' || vowel == 'U') {
+                article = "An ";
+            }
+            System.out.println(article + provision.getType() + " at age: " + provision.getAge());
         }
 
+        pause(3000);
     }
 
     public static void tools() {

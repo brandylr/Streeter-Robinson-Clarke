@@ -3,8 +3,6 @@ package view;
 import app.CityOfAaron;
 import control.GameControl;
 import exceptions.GameControlException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import model.Game;
 
 public class SaveGameView extends ViewBase {

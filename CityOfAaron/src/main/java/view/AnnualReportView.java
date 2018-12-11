@@ -2,8 +2,6 @@ package view;
 
 import app.CityOfAaron;
 import exceptions.PopulationControlException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class AnnualReportView extends ViewBase {
 
