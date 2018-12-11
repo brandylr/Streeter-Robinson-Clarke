@@ -2,12 +2,16 @@ package view;
 
 import app.CityOfAaron;
 import control.StorehouseControl;
+import static control.StorehouseControl.provisions;
 import exceptions.GameControlException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import model.Animal;
 import model.InventoryItem;
+import model.Provision;
+import view.ErrorView;
+import static view.ViewBase.pause;
 
 public class ReportsMenuView extends ViewBase {
 
@@ -79,6 +83,13 @@ public class ReportsMenuView extends ViewBase {
                 break;
             case "3":
                 StorehouseControl.provisions();
+                String provisionsFileName = getUserInput("Type in what you would like to name the report file: ", true);
+                if (provisionsFileName != null || provisionsFileName.equals("")) {
+                    printProvisionReport(CityOfAaron.getCurrentGame().getTheStorehouse().provisions, provisionsFileName.replaceAll("\\s+", "").toLowerCase() + ".txt");
+                    System.out.println("Saving report " + provisionsFileName.replaceAll("\\s+", "").toLowerCase() + ".txt");
+                    pause(500);
+                    System.out.println("Report has been saved");
+                }
                 break;
             case "4":
                 StorehouseControl.tools();
@@ -144,6 +155,26 @@ public class ReportsMenuView extends ViewBase {
             for (Animal animal : animals) {
                 out.printf("%n%-15s%10d", animal.getType(),
                         animal.getAge());
+            }
+        } catch (IOException ex) {
+            ErrorView.display(ReportsMenuView.class.getName(), ex.getMessage());
+        }
+    }
+
+    private void printProvisionReport(Provision[] provisions, String fileName) {
+        // create BufferedReader object for input file
+        try (PrintWriter out = new PrintWriter(new FileWriter(fileName))) {
+
+            // print title and column headings
+            out.println("\n\n         Provision Report");
+            out.printf("%n%-15s%10s", "Provision Name", "Age");
+            out.printf("%n%-15s%10s%", "--------------", "---");
+
+            //print the name and age of each provision
+            for (Provision provision : provisions) {
+                out.printf("%n%-15s%10d%", provision.getType(),
+                        provision.getAge());
+
             }
         } catch (IOException ex) {
             ErrorView.display(ReportsMenuView.class.getName(), ex.getMessage());
