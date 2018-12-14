@@ -7,8 +7,8 @@ import java.util.Objects;
 
 public class Location implements Serializable {
     
-    private String name;
-    private String description;
+    private static String name;
+    private static String description;
     private String mapSymbol;
     private String[] gameTips;
     
@@ -24,7 +24,7 @@ public class Location implements Serializable {
     }
     
     
-    public String getName() {
+    public static String getName() {
         return name;
     }
 
@@ -32,7 +32,7 @@ public class Location implements Serializable {
         this.name = name;
     }
 
-    public String getDescription() {
+    public static String getDescription() {
         return description;
     }
 

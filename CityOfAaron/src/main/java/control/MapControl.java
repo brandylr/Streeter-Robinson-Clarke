@@ -41,7 +41,7 @@ public class MapControl {
 
         locations[3][0] = new Location("F", "Fields", "Description", new String[]{"Tip1", "Tip2", "Tip3"});
         locations[3][1] = new Location("F", "Fields", "Description", new String[]{"Tip1", "Tip2", "Tip3"});
-        locations[3][2] = new Location("S", "The Storehouse", "Where we store all of our inventory", new String[]{"Tip1", "Tip2", "Tip3"});
+        locations[3][2] = new Location("F", "Fields", "Where we store all of our inventory", new String[]{"Tip1", "Tip2", "Tip3"});
         locations[3][3] = new Location("V", "Village", "Description", new String[]{"Tip1", "Tip2", "Tip3"});
         locations[3][4] = new Location("B", "Borderline", "Description", new String[]{"Tip1", "Tip2", "Tip3"});
 
@@ -49,10 +49,10 @@ public class MapControl {
         locations[4][1] = new Location("F", "Fields", "Description", new String[]{"Tip1", "Tip2", "Tip3"});
         locations[4][2] = new Location("F", "Fields", "Description", new String[]{"Tip1", "Tip2", "Tip3"});
         locations[4][3] = new Location("V", "Village", "Description", new String[]{"Tip1", "Tip2", "Tip3"});
-        locations[4][4] = new Location("B", "Borderline", "Description", new String[]{"Tip1", "Tip2", "Tip3"});
+        locations[4][4] = new Location("S", "The Storehouse", "Description", new String[]{"Tip1", "Tip2", "Tip3"});
 
         map.setLocations(locations);
-        Point point = new Point(3, 2);
+        Point point = new Point(4, 4);
         map.setCurrentLocation(point);
         return map;
     }

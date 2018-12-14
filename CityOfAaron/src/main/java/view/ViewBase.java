@@ -107,7 +107,7 @@ public abstract class ViewBase implements View {
 
         for (i = 0; i < 3; i++) {
             try {
-                Thread.sleep(time);
+                Thread.sleep(time/5);
             } catch (InterruptedException exception) {
             }
             System.out.println(".");

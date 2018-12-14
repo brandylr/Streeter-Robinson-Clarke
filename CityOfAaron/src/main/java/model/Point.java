@@ -4,7 +4,9 @@
  * and open the template in the editor.
  */
 package model;
+import app.CityOfAaron;
 import java.io.Serializable;
+import model.Location;
 /**
  *
  * @author jonclarkes
@@ -39,7 +41,7 @@ public class Point implements Serializable {
 
     @Override
     public String toString() {
-        return "Point{" + "row=" + row + ", column=" + column + '}';
+        return model.Location.getName();
     }
     
     

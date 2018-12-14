@@ -4,13 +4,15 @@ package control;
 import app.CityOfAaron;
 import exceptions.GameControlException;
 import exceptions.PopulationControlException;
+import java.io.PrintWriter;
 
 /**
  *
  * @author brobinson
  */
 public class PopulationControl {
-    
+     protected static final PrintWriter console = CityOfAaron.getOutFile();   
+
     /**
      *
      * @param bushelsForFood
@@ -24,12 +26,12 @@ public class PopulationControl {
             }
         
         if (bushelsForFood > CityOfAaron.getCurrentGame().getWheatInStorage()) {
-            System.out.println("You do not have enough wheat to feed the people.\n");
+            PopulationControl.console.println("You do not have enough wheat to feed the people.\n");
         }
         
         if (bushelsForFood <= CityOfAaron.getCurrentGame().getWheatInStorage()) {
             CityOfAaron.getCurrentGame().setWheatInStorage(CityOfAaron.getCurrentGame().getWheatInStorage() - bushelsForFood);
-            System.out.println("You now have " + CityOfAaron.getCurrentGame().getWheatInStorage() + " bushels of wheat left.\n");
+            PopulationControl.console.println("You now have " + CityOfAaron.getCurrentGame().getWheatInStorage() + " bushels of wheat left.\n");
         }
         
     }

@@ -22,7 +22,7 @@ public class GameMenuView extends ViewBase {
                 + "**********************Current Year************************\n"
                 + "**********************************************************\n"
                 + "Player Name: " + CityOfAaron.getCurrentGame().getThePlayer().getName() + "\n"
-                + "Map: " + CityOfAaron.getCurrentGame().getTheMap().getCurrentLocation() + "\n"
+                + "Map: " + CityOfAaron.getCurrentGame().getTheMap().getCurrentLocation().toString() + "\n"
                 + "Acres Owned: " + CityOfAaron.getCurrentGame().getAcresOwned() + "\n"
                 + "Wheat In Storage: " + CityOfAaron.getCurrentGame().getWheatInStorage() + "\n"
                 + "Current Population: " + CityOfAaron.getCurrentGame().getCurrentPopulation() + "\n"
@@ -36,8 +36,7 @@ public class GameMenuView extends ViewBase {
                 + "4 - View Inventory\n"
                 + "5 - Live the Year\n"
                 + "6 - Save Game\n"
-                + "7 - Return to the Main Menu\n"
-                + "8 - EndGameView (test value)\n";
+                + "7 - Return to the Main Menu\n";
 
     }
 
@@ -103,9 +102,6 @@ public class GameMenuView extends ViewBase {
                 break;
             case "7":
                 this.console.println("Exiting back to the Main Menu.\n\n");
-                return false;
-            case "8":
-                endGame();
                 return false;
             default:
                 ErrorView.display(GameMenuView.class.getName(),
