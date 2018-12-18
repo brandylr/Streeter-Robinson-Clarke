@@ -1,0 +1,11 @@
+
+
+           Tool Report           
+
+Tool Name   Quantity Condition
+---------   -------- ---------
+Shovel            10      GOOD
+Rake               6      GOOD
+Lumber            30      GOOD
+Scythe             3      FAIR
+Hammer             4      FAIR

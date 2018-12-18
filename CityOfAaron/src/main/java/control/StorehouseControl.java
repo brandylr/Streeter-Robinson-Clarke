@@ -8,6 +8,7 @@ package control;
 import app.CityOfAaron;
 import static control.GameControl.getRandomNumber;
 import exceptions.GameControlException;
+import java.io.PrintWriter;
 import model.InventoryItem;
 import model.Condition;
 import model.Animal;
@@ -20,6 +21,8 @@ import static view.ViewBase.pause;
  * @author brobinson
  */
 public class StorehouseControl {
+    
+    protected static final PrintWriter console = CityOfAaron.getOutFile();
 
     public StorehouseControl() {
 
@@ -143,7 +146,7 @@ public class StorehouseControl {
             }
         }
         for (InventoryItem inventoryItem : tool) {
-            System.out.println(inventoryItem);
+            StorehouseControl.console.println(inventoryItem);
         }
 
     }
